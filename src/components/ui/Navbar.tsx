@@ -44,10 +44,10 @@ export default function Navbar() {
             />
           </div>
           <div>
-            <span className="font-serif font-bold text-ink-main text-base sm:text-lg tracking-normal block leading-tight">
-              Guna <span className="text-amber-600 font-calligraphy text-xl sm:text-2xl font-normal">&bull; amoristartsy</span>
+            <span className="font-serif font-bold text-ink-main text-lg sm:text-xl tracking-normal block leading-tight">
+              Guna <span className="text-amber-600 font-calligraphy text-2xl sm:text-3xl font-normal">&bull; amoristartsy</span>
             </span>
-            <span className="font-calligraphy text-xs sm:text-sm text-amber-800 block font-semibold">
+            <span className="font-calligraphy text-sm sm:text-base text-amber-800 block font-semibold">
               Handmade Pieces of Joy
             </span>
           </div>
