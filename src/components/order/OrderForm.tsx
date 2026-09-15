@@ -130,12 +130,12 @@ export default function OrderForm() {
         {/* Left Column: Mini-Canvas Selection with Search & Filters (7 Cols) */}
         <div className="lg:col-span-7 space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
-            <h3 className="text-lg sm:text-xl font-bold font-display uppercase tracking-tight text-ink-main flex items-center gap-2">
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-ink-main flex items-center gap-2">
               <ShoppingBag className="w-5 h-5 text-amber-600 shrink-0" />
-              <span>Select Handcrafted Mini Canvases</span>
+              <span>Choose Handcrafted Mini Canvases</span>
             </h3>
 
-            <span className="self-start sm:self-auto text-xs font-mono text-amber-800 bg-amber-500/15 px-3 py-1 rounded-full border border-amber-500/30 font-semibold">
+            <span className="self-start sm:self-auto text-xs font-sans text-amber-900 bg-amber-500/15 px-3.5 py-1 rounded-full border border-amber-500/30 font-medium">
               {selectedItems.length} Selected ({totalItemCount} Items)
             </span>
           </div>
@@ -151,7 +151,7 @@ export default function OrderForm() {
                 setVisibleCount(INITIAL_VISIBLE_COUNT);
               }}
               placeholder="Search by artwork name, character, shape (e.g. Luffy, Heart, Pichwai)..."
-              className="w-full pl-9 pr-4 py-3 rounded-2xl bg-white border border-amber-900/15 text-ink-main text-xs font-mono focus:border-amber-500 focus:outline-none transition-colors shadow-sm"
+              className="w-full pl-9 pr-4 py-3 rounded-2xl bg-white border border-amber-900/15 text-ink-main text-xs font-sans focus:border-amber-500 focus:outline-none transition-colors shadow-sm"
             />
           </div>
 
@@ -167,10 +167,10 @@ export default function OrderForm() {
                     setSelectedCategory(cat);
                     setVisibleCount(INITIAL_VISIBLE_COUNT);
                   }}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-sans whitespace-nowrap transition-all ${
                     isActive
                       ? "bg-amber-500 text-white font-semibold shadow-warm-amber"
-                      : "bg-white text-ink-muted hover:text-ink-main border border-amber-900/10 shadow-sm"
+                      : "bg-white text-ink-muted hover:text-ink-main border border-amber-900/10 shadow-sm font-medium"
                   }`}
                 >
                   {cat}
@@ -223,18 +223,18 @@ export default function OrderForm() {
 
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5 sm:gap-2 mb-0.5">
-                          <span className="px-1.5 sm:px-2 py-0.5 rounded bg-white text-[9px] sm:text-[10px] font-mono capitalize text-amber-800 font-semibold border border-amber-900/10">
-                            {artwork.canvasShape}
+                          <span className="px-2 py-0.5 rounded-full bg-white text-xs font-calligraphy text-accent-terracotta font-bold border border-amber-900/10">
+                            {artwork.canvasShape} canvas
                           </span>
-                          <span className="text-[9px] sm:text-[10px] font-mono text-ink-muted truncate">
+                          <span className="text-[10px] sm:text-xs font-sans text-ink-muted truncate">
                             {artwork.sizeDimensions}
                           </span>
                         </div>
-                        <h4 className="text-xs sm:text-sm font-semibold text-ink-main truncate group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
+                        <h4 className="text-sm font-serif font-semibold text-ink-main truncate group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
                           <span>{artwork.title}</span>
-                          <Eye className="w-3 h-3 text-ink-muted opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                          <Eye className="w-3.5 h-3.5 text-ink-muted opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                         </h4>
-                        <span className="text-xs font-mono font-bold text-accent-terracotta">
+                        <span className="text-xs font-sans font-bold text-accent-terracotta">
                           ₹{artwork.price}
                         </span>
                       </div>
@@ -251,7 +251,7 @@ export default function OrderForm() {
                           >
                             <Minus className="w-3 h-3" />
                           </button>
-                          <span className="text-xs font-mono font-bold w-4 text-center text-amber-700">
+                          <span className="text-xs font-sans font-bold w-4 text-center text-amber-700">
                             {qty}
                           </span>
                           <button
@@ -266,7 +266,7 @@ export default function OrderForm() {
                         <button
                           type="button"
                           onClick={() => handleIncrement(artwork.id)}
-                          className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-[11px] sm:text-xs font-mono hover:border-amber-500 hover:text-amber-700 transition-all flex items-center gap-1 shadow-sm"
+                          className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-[11px] sm:text-xs font-sans font-medium hover:border-amber-500 hover:text-amber-700 transition-all flex items-center gap-1 shadow-sm"
                         >
                           <Plus className="w-3 h-3" />
                           <span>Add (₹{artwork.price})</span>
@@ -296,17 +296,17 @@ export default function OrderForm() {
         {/* Right Column: Order Summary & Delivery Form (5 Cols) */}
         <div className="lg:col-span-5" id="checkout-form">
           <div className="p-5 sm:p-8 rounded-3xl glass-panel border border-amber-900/15 sticky top-24 sm:top-28 shadow-xl">
-            <h3 className="text-lg sm:text-xl font-bold font-display uppercase tracking-tight text-ink-main mb-6 flex items-center gap-2">
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-ink-main mb-6 flex items-center gap-2">
               <MapPin className="w-5 h-5 text-accent-terracotta shrink-0" />
-              <span>Order Summary & Delivery</span>
+              <span>Your Selection & Delivery</span>
             </h3>
 
             {/* Selected Items Breakdown */}
             {selectedItems.length === 0 ? (
               <div className="p-5 sm:p-6 rounded-2xl bg-white/70 border border-amber-900/10 text-center mb-6 shadow-sm">
                 <ShoppingBag className="w-8 h-8 text-ink-muted mx-auto mb-2" />
-                <p className="text-xs font-mono text-ink-muted">
-                  No mini canvases selected yet. Click any artwork image to inspect details or click &quot;Add&quot;!
+                <p className="text-xs font-sans text-ink-muted leading-relaxed">
+                  No mini canvases selected yet. Tap any canvas to see details or click &quot;Add&quot;!
                 </p>
               </div>
             ) : (
@@ -314,12 +314,12 @@ export default function OrderForm() {
                 {selectedItems.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center justify-between text-xs font-mono py-1.5 border-b border-amber-900/10 cursor-pointer hover:text-amber-700 transition-colors"
+                    className="flex items-center justify-between text-xs font-sans py-2 border-b border-amber-900/10 cursor-pointer hover:text-amber-700 transition-colors"
                     onClick={() => setInspectedArtwork(item)}
                     title="Click to view details"
                   >
                     <span className="text-ink-main truncate max-w-[170px] hover:text-amber-700 font-medium">
-                      {item.title} (x{quantities[item.id]})
+                      {item.title} <span className="text-ink-muted">(x{quantities[item.id]})</span>
                     </span>
                     <span className="text-amber-700 font-bold">
                       ₹{item.price * quantities[item.id]}
@@ -327,9 +327,9 @@ export default function OrderForm() {
                   </div>
                 ))}
 
-                <div className="flex items-center justify-between pt-3 text-sm font-mono font-bold text-ink-main border-t border-amber-900/15">
+                <div className="flex items-center justify-between pt-3 text-sm font-sans font-bold text-ink-main border-t border-amber-900/15">
                   <span>Total Amount:</span>
-                  <span className="text-amber-600 text-lg">₹{grandTotal}</span>
+                  <span className="text-amber-600 text-xl font-bold">₹{grandTotal}</span>
                 </div>
               </div>
             )}
@@ -337,7 +337,7 @@ export default function OrderForm() {
             {/* Delivery Form */}
             <form onSubmit={handleWhatsAppOrder} className="space-y-4">
               <div>
-                <label className="block text-[11px] font-mono uppercase tracking-widest text-ink-muted mb-1 font-semibold">
+                <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
                   Your Full Name *
                 </label>
                 <input
@@ -346,13 +346,13 @@ export default function OrderForm() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Kishore"
-                  className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-mono focus:border-amber-500 focus:outline-none shadow-sm"
+                  className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-sans focus:border-amber-500 focus:outline-none shadow-sm"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-widest text-ink-muted mb-1 font-semibold">
+                  <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
                     WhatsApp Number *
                   </label>
                   <input
@@ -361,12 +361,12 @@ export default function OrderForm() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 9876543210"
-                    className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-mono focus:border-amber-500 focus:outline-none shadow-sm"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-sans focus:border-amber-500 focus:outline-none shadow-sm"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-mono uppercase tracking-widest text-ink-muted mb-1 font-semibold">
+                  <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
                     Pincode *
                   </label>
                   <input
@@ -375,13 +375,13 @@ export default function OrderForm() {
                     value={pincode}
                     onChange={(e) => setPincode(e.target.value)}
                     placeholder="560001"
-                    className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-mono focus:border-amber-500 focus:outline-none shadow-sm"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-sans focus:border-amber-500 focus:outline-none shadow-sm"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[11px] font-mono uppercase tracking-widest text-ink-muted mb-1 font-semibold">
+                <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
                   Full Delivery Address *
                 </label>
                 <textarea
@@ -389,13 +389,13 @@ export default function OrderForm() {
                   rows={2}
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  placeholder="House No, Street, Landmark, Area"
-                  className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-mono focus:border-amber-500 focus:outline-none resize-none shadow-sm"
+                  placeholder="House / Flat No, Street, Landmark, Area"
+                  className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-sans focus:border-amber-500 focus:outline-none resize-none shadow-sm"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-mono uppercase tracking-widest text-ink-muted mb-1 font-semibold">
+                <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
                   City / State *
                 </label>
                 <input
@@ -404,20 +404,20 @@ export default function OrderForm() {
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   placeholder="Bangalore, Karnataka"
-                  className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-mono focus:border-amber-500 focus:outline-none shadow-sm"
+                  className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-sans focus:border-amber-500 focus:outline-none shadow-sm"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-mono uppercase tracking-widest text-ink-muted mb-1 font-semibold">
-                  Custom Gift Notes / Preferences
+                <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
+                  Custom Gift Notes / Painting Requests (Optional)
                 </label>
                 <input
                   type="text"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="e.g. Include birthday note"
-                  className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-mono focus:border-amber-500 focus:outline-none shadow-sm"
+                  placeholder="e.g. Please add birthday packaging or custom note"
+                  className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-sans focus:border-amber-500 focus:outline-none shadow-sm"
                 />
               </div>
 
@@ -434,21 +434,21 @@ export default function OrderForm() {
                 <Send className="w-4 h-4" />
                 <span>
                   {selectedItems.length > 0
-                    ? `Dispatch Order via WhatsApp (₹${grandTotal})`
+                    ? `Place Order via WhatsApp (₹${grandTotal})`
                     : "Select Canvases to Order"}
                 </span>
               </button>
             </form>
 
             {orderSent && (
-              <div className="mt-4 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-800 text-xs font-mono flex items-center gap-2">
-                <Check className="w-4 h-4 text-amber-700" />
-                <span>WhatsApp order pre-filled! Click send in WhatsApp.</span>
+              <div className="mt-4 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-900 text-xs font-sans flex items-center gap-2">
+                <Check className="w-4 h-4 text-amber-700 shrink-0" />
+                <span>WhatsApp order pre-filled! Send the message in WhatsApp to confirm.</span>
               </div>
             )}
 
-            <div className="mt-6 pt-4 border-t border-amber-900/10 text-[10px] font-mono text-ink-muted text-center">
-              Handmade pieces of joy • Direct order with Guna (+91 89048 65499)
+            <div className="mt-6 pt-4 border-t border-amber-900/10 text-sm font-calligraphy text-amber-900 font-bold text-center">
+              Handmade with love by Guna &bull; Direct WhatsApp: +91 89048 65499
             </div>
           </div>
         </div>
@@ -458,16 +458,16 @@ export default function OrderForm() {
       {selectedItems.length > 0 && (
         <div className="fixed bottom-4 left-4 right-4 z-40 lg:hidden bg-amber-500 text-white rounded-2xl shadow-2xl border border-amber-400 p-3.5 flex items-center justify-between animate-in slide-in-from-bottom duration-300">
           <div>
-            <div className="text-[11px] font-mono font-medium text-amber-100">
+            <div className="text-xs font-sans font-medium text-amber-100">
               {totalItemCount} item{totalItemCount > 1 ? "s" : ""} selected
             </div>
-            <div className="text-base font-bold font-mono">₹{grandTotal}</div>
+            <div className="text-lg font-bold font-sans">₹{grandTotal}</div>
           </div>
 
           <button
             type="button"
             onClick={scrollToCheckout}
-            className="px-4 py-2 rounded-xl bg-white text-ink-main font-bold text-xs flex items-center gap-1.5 shadow-sm active:scale-95"
+            className="px-4 py-2 rounded-xl bg-white text-ink-main font-semibold text-xs flex items-center gap-1.5 shadow-sm active:scale-95"
           >
             <span>Proceed to Order</span>
             <ArrowDown className="w-3.5 h-3.5" />

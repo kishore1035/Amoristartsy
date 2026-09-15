@@ -18,7 +18,7 @@ export default function OrderPage() {
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono text-ink-muted hover:text-amber-800 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-sans text-ink-muted hover:text-amber-800 transition-colors font-medium"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Studio Gallery</span>
@@ -27,22 +27,22 @@ export default function OrderPage() {
 
         {/* Page Banner Header */}
         <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/30 text-amber-800 font-mono text-xs mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/30 text-amber-800 text-xs mb-4">
             <Heart className="w-3.5 h-3.5 text-accent-terracotta" />
-            <span>DIRECT HANDMADE PIECES STORE</span>
+            <span className="font-calligraphy text-base sm:text-lg font-bold">Direct from Guna&apos;s Studio</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-bold font-display uppercase tracking-tight text-ink-main mb-4">
-            ORDER MINI <span className="text-primary-500">CANVASES</span>
+          <h1 className="text-4xl sm:text-6xl font-serif text-ink-main mb-4 font-normal tracking-tight">
+            Order Mini <span className="font-calligraphy text-5xl sm:text-7xl text-amber-600 italic">Canvases</span>
           </h1>
 
           <p className="text-base text-ink-muted font-sans leading-relaxed">
-            Select your favorite hand-painted physical mini canvases from Guna&apos;s gallery collection. All pieces are available for purchase directly from Guna.
+            Select your favorite hand-painted physical mini canvases from Guna&apos;s gallery collection. All pieces are available for purchase directly from Guna with direct WhatsApp confirmation.
           </p>
         </div>
 
         {/* Order Form Container */}
-        <Suspense fallback={<div className="text-amber-800 text-sm font-mono animate-pulse">Loading Order Form...</div>}>
+        <Suspense fallback={<div className="text-amber-800 text-sm font-sans animate-pulse">Loading Order Form...</div>}>
           <OrderForm />
         </Suspense>
       </div>

@@ -45,17 +45,19 @@ export default function MinimalGallery({ onSelectArtwork }: MinimalGalleryProps)
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 font-mono text-xs mb-3 font-semibold">
-            <Grid className="w-3.5 h-3.5" />
-            <span>STUDIO GALLERY COLLECTION</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 text-xs mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+            <span className="font-calligraphy text-base sm:text-lg font-bold text-amber-900">
+              Original Studio Gallery
+            </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-ink-main">
-            HANDMADE <span className="text-amber-600">CANVAS COLLECTION</span>
+          <h2 className="text-3xl sm:text-5xl font-serif text-ink-main tracking-tight font-normal">
+            Handmade <span className="font-calligraphy text-4xl sm:text-6xl text-amber-600 italic">Canvas Collection</span>
           </h2>
         </div>
 
         <p className="text-sm text-ink-muted max-w-md font-sans leading-relaxed">
-          Browse Guna&apos;s expanded collection of <strong className="text-amber-900">{ARTWORKS.length} hand-painted physical mini canvases</strong>. All artworks are available for direct order with individual custom pricing.
+          Browse Guna&apos;s collection of <strong className="text-amber-900 font-semibold">{ARTWORKS.length} hand-painted physical mini canvases</strong>. Each piece is crafted with acrylics on woven canvas board, ready to bring warmth to your desk or wall.
         </p>
       </div>
 
@@ -72,8 +74,8 @@ export default function MinimalGallery({ onSelectArtwork }: MinimalGalleryProps)
                   setSelectedCategory(cat);
                   setVisibleCount(ITEMS_PER_PAGE);
                 }}
-                className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-mono transition-colors duration-200 ${
-                  isActive ? "text-white font-bold" : "text-ink-muted hover:text-ink-main"
+                className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-sans transition-colors duration-200 ${
+                  isActive ? "text-white font-semibold" : "text-ink-muted hover:text-ink-main font-medium"
                 }`}
               >
                 {isActive && (
@@ -99,8 +101,8 @@ export default function MinimalGallery({ onSelectArtwork }: MinimalGalleryProps)
               setSearchQuery(e.target.value);
               setVisibleCount(ITEMS_PER_PAGE);
             }}
-            placeholder="Search canvases..."
-            className="w-full pl-9 pr-4 py-2 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-mono focus:border-amber-500 focus:outline-none transition-colors shadow-sm"
+            placeholder="Search by name, shape, character..."
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-sans focus:border-amber-500 focus:outline-none transition-colors shadow-sm"
           />
         </div>
       </div>
@@ -127,10 +129,10 @@ export default function MinimalGallery({ onSelectArtwork }: MinimalGalleryProps)
         <div className="mt-16 text-center">
           <button
             onClick={handleLoadMore}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white border border-amber-900/15 text-ink-main hover:border-amber-500 hover:text-amber-700 text-sm font-mono transition-all backdrop-blur-md shadow-sm active:scale-95"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-white border border-amber-900/15 text-ink-main hover:border-amber-500 hover:text-amber-700 text-sm font-sans font-medium transition-all backdrop-blur-md shadow-sm active:scale-95"
           >
             <Sparkles className="w-4 h-4 text-amber-600" />
-            <span>Load More Canvases ({visibleArtworks.length} of {filteredArtworks.length})</span>
+            <span>Discover More Canvases ({visibleArtworks.length} of {filteredArtworks.length})</span>
           </button>
         </div>
       )}

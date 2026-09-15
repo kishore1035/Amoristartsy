@@ -40,20 +40,22 @@ export default function MinimalHero() {
       >
         {/* Brand Tag */}
         <motion.div variants={itemVariants} className="inline-block">
-          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/80 border border-amber-900/15 text-amber-800 font-mono text-[11px] sm:text-xs mb-5 sm:mb-6 shadow-sm">
-            <Heart className="w-3.5 h-3.5 text-accent-terracotta shrink-0" />
-            <span>AMORISTARTSY // HANDMADE PIECES OF JOY</span>
+          <div className="inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 rounded-full bg-white/90 border border-amber-900/15 text-amber-800 shadow-sm mb-5 sm:mb-6">
+            <Heart className="w-4 h-4 text-accent-terracotta shrink-0" />
+            <span className="font-calligraphy text-base sm:text-xl font-bold text-accent-terracotta tracking-wide">
+              amoristartsy &bull; handcrafted pieces of joy
+            </span>
           </div>
         </motion.div>
 
         {/* Main Headline */}
         <motion.h1
           variants={itemVariants}
-          className="text-3xl sm:text-6xl md:text-7xl font-bold font-display uppercase tracking-tight text-ink-main leading-[1.1] mb-4 sm:mb-6"
+          className="text-4xl sm:text-6xl md:text-7xl font-serif text-ink-main leading-[1.15] mb-5 sm:mb-7 font-normal"
         >
-          HANDPAINTED <br />
-          <span className="bg-gradient-to-r from-amber-600 via-accent-terracotta to-amber-700 bg-clip-text text-transparent">
-            MINI CANVASES
+          Handpainted <br />
+          <span className="font-calligraphy text-5xl sm:text-7xl md:text-8xl bg-gradient-to-r from-amber-600 via-accent-terracotta to-amber-700 bg-clip-text text-transparent inline-block pt-1">
+            Mini Canvases
           </span>
         </motion.h1>
 

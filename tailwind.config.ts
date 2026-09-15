@@ -33,9 +33,11 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-outfit)", "system-ui", "sans-serif"],
-        display: ["var(--font-space-grotesk)", "sans-serif"],
-        serif: ["Playfair Display", "Georgia", "serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        display: ["var(--font-playfair)", "Playfair Display", "Georgia", "serif"],
+        serif: ["var(--font-cormorant)", "Cormorant Garamond", "Georgia", "serif"],
+        handwriting: ["var(--font-caveat)", "Caveat", "cursive"],
+        calligraphy: ["var(--font-caveat)", "Caveat", "cursive"],
+        mono: ["var(--font-outfit)", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "hero-gradient": "radial-gradient(circle at 50% 30%, rgba(254, 215, 170, 0.45) 0%, rgba(254, 202, 202, 0.3) 45%, rgba(250, 247, 242, 0) 100%)",

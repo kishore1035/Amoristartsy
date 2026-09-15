@@ -44,23 +44,23 @@ export default function Navbar() {
             />
           </div>
           <div>
-            <span className="font-display font-bold text-ink-main text-sm sm:text-base tracking-wider block leading-tight">
-              GUNA <span className="text-amber-600">//</span> AMORISTARTSY
+            <span className="font-serif font-bold text-ink-main text-base sm:text-lg tracking-normal block leading-tight">
+              Guna <span className="text-amber-600 font-calligraphy text-xl sm:text-2xl font-normal">&bull; amoristartsy</span>
             </span>
-            <span className="font-mono text-[9px] sm:text-[10px] text-amber-700 block tracking-widest uppercase font-medium">
+            <span className="font-calligraphy text-xs sm:text-sm text-amber-800 block font-semibold">
               Handmade Pieces of Joy
             </span>
           </div>
         </Link>
 
         {/* Center Navigation Links (Desktop) */}
-        <nav className="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest text-ink-main font-medium">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-sans text-ink-main font-medium">
           <Link
             href="/#gallery"
             className="hover:text-amber-700 transition-colors flex items-center gap-1.5"
           >
             <Layers className="w-3.5 h-3.5 text-amber-600" />
-            <span>MINI-CANVAS GALLERY</span>
+            <span>Mini-Canvas Gallery</span>
           </Link>
 
           <Link
@@ -68,7 +68,7 @@ export default function Navbar() {
             className="hover:text-amber-700 transition-colors flex items-center gap-1.5"
           >
             <Compass className="w-3.5 h-3.5 text-accent-terracotta" />
-            <span>BIO & STORY</span>
+            <span>Bio & Story</span>
           </Link>
         </nav>
 
@@ -78,10 +78,10 @@ export default function Navbar() {
 
           <Link
             href="/order"
-            className="hidden sm:inline-flex items-center gap-2.5 px-5 sm:px-6 py-2 sm:py-2.5 rounded-2xl bg-amber-500 text-white font-mono font-bold text-xs hover:bg-amber-600 transition-all shadow-warm-amber active:scale-95 whitespace-nowrap"
+            className="hidden sm:inline-flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 rounded-2xl bg-amber-500 text-white font-sans font-semibold text-xs sm:text-sm hover:bg-amber-600 transition-all shadow-warm-amber active:scale-95 whitespace-nowrap"
           >
             <ShoppingBag className="w-4 h-4 text-white shrink-0" />
-            <span>ORDER CANVASES</span>
+            <span>Order Canvases</span>
           </Link>
 
           {/* Mobile Hamburger Button */}
@@ -103,35 +103,34 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden bg-white/98 border-b border-amber-900/10 shadow-lg overflow-hidden backdrop-blur-xl"
+            className="md:hidden bg-white/98 backdrop-blur-2xl border-b border-amber-900/15 overflow-hidden shadow-lg"
           >
-            <div className="px-6 py-5 space-y-4 font-mono text-xs">
+            <div className="px-6 py-5 space-y-4 font-sans text-sm">
               <Link
                 href="/#gallery"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 py-2 text-ink-main hover:text-amber-700 font-medium border-b border-amber-900/5"
+                className="flex items-center gap-2.5 text-ink-main hover:text-amber-700 py-2 border-b border-amber-900/10"
               >
                 <Layers className="w-4 h-4 text-amber-600" />
-                <span>MINI-CANVAS GALLERY</span>
+                <span>Mini-Canvas Gallery</span>
               </Link>
 
               <Link
                 href="/#story"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 py-2 text-ink-main hover:text-amber-700 font-medium border-b border-amber-900/5"
+                className="flex items-center gap-2.5 text-ink-main hover:text-amber-700 py-2 border-b border-amber-900/10"
               >
                 <Compass className="w-4 h-4 text-accent-terracotta" />
-                <span>BIO & STORY</span>
+                <span>Bio & Story</span>
               </Link>
 
               <Link
                 href="/order"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2.5 w-full py-3 rounded-xl bg-amber-500 text-white font-bold shadow-warm-amber active:scale-95"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-amber-500 text-white font-semibold shadow-warm-amber"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>ORDER CANVASES</span>
+                <span>Order Mini Canvases</span>
               </Link>
             </div>
           </motion.div>

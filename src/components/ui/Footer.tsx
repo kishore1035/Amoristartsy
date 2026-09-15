@@ -23,22 +23,22 @@ export default function Footer() {
               <Image src="/logo.png" alt="amoristartsy" fill className="object-contain p-0.5" />
             </div>
             <div>
-              <span className="font-display font-bold text-ink-main text-lg sm:text-xl tracking-wide block">
-                AMORISTARTSY
+              <span className="font-serif font-bold text-ink-main text-xl sm:text-2xl block leading-tight">
+                amoristartsy
               </span>
-              <span className="font-mono text-xs text-blue-700 block tracking-wider font-semibold">
-                Handmade Pieces of Joy by Guna
+              <span className="font-calligraphy text-base text-blue-900 block font-bold">
+                Handmade pieces of joy by Guna
               </span>
             </div>
           </div>
 
           <p className="text-xs sm:text-sm text-ink-muted font-sans leading-relaxed mb-6">
-            Handcrafted mini acrylic canvases painted with hope, warm pastel colors, and love. All physical gallery pieces are available for direct order.
+            Handcrafted mini acrylic canvases painted with hope, warm pastel colors, and love. Each piece is unique and ready to bring a smile to your space.
           </p>
 
           <Link
             href="/order"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-500 text-white font-semibold text-xs sm:text-sm hover:bg-amber-600 transition-all shadow-warm-amber active:scale-95"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-white font-semibold text-xs sm:text-sm hover:bg-amber-600 transition-all shadow-warm-amber active:scale-95"
           >
             <ShoppingBag className="w-4 h-4 text-white" />
             <span>Order Mini Canvases</span>
@@ -49,34 +49,34 @@ export default function Footer() {
         {/* Right Column */}
         <div className="space-y-6">
           <div>
-            <h4 className="text-xs font-mono text-blue-800 uppercase tracking-widest mb-3 flex items-center gap-1.5 font-bold">
+            <h4 className="text-xs font-sans font-semibold text-blue-950 uppercase tracking-wider mb-3 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-              <span>MINI CANVAS SELECTION</span>
+              <span>Featured Mini Canvases</span>
             </h4>
             <div className="flex flex-wrap gap-2 max-w-sm">
               {featuredArtworks.map((item) => (
                 <Link
                   key={item.id}
                   href={`/order?item=${item.id}`}
-                  className="px-2.5 py-1 rounded-md bg-white/80 border border-blue-200 text-[11px] font-mono text-blue-900 hover:text-amber-700 hover:border-amber-400 transition-colors shadow-sm"
+                  className="px-3 py-1 rounded-full bg-white/90 border border-blue-200 text-xs font-sans text-blue-950 hover:text-amber-700 hover:border-amber-400 transition-colors shadow-xs"
                 >
-                  {item.title} (₹{item.price})
+                  {item.title} <span className="font-bold text-amber-800">(₹{item.price})</span>
                 </Link>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="text-xs font-mono text-blue-800 uppercase tracking-widest mb-3 flex items-center gap-1.5 font-bold">
+            <h4 className="text-xs font-sans font-semibold text-blue-950 uppercase tracking-wider mb-3 flex items-center gap-1.5">
               <Heart className="w-3.5 h-3.5 text-accent-terracotta" />
-              <span>DIRECT ORDER & CONNECT</span>
+              <span>Direct Order & Custom Inquiries</span>
             </h4>
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="https://wa.me/918904865499"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs font-mono hover:bg-blue-700 transition-all shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs font-sans hover:bg-blue-700 transition-all shadow-sm"
               >
                 <MessageCircle className="w-4 h-4 text-white" />
                 <span>WhatsApp: +91 89048 65499</span>
@@ -86,7 +86,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-blue-200 text-xs font-mono text-ink-main hover:text-amber-600 hover:border-amber-400 transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-blue-200 text-xs font-sans text-ink-main hover:text-amber-600 hover:border-amber-400 transition-colors shadow-sm font-medium"
               >
                 <Instagram className="w-4 h-4 text-accent-terracotta" />
                 <span>@amoristartsy</span>
@@ -96,9 +96,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto pt-6 sm:pt-8 border-t border-blue-200/60 flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs font-mono text-blue-900/80 font-medium gap-3 text-center sm:text-left">
-        <span>© {new Date().getFullYear()} AMORISTARTSY // HANDMADE PIECES OF JOY BY GUNA</span>
-        <span className="text-blue-800 font-bold">WHATSAPP ORDERS: +91 89048 65499</span>
+      <div className="max-w-7xl mx-auto pt-6 sm:pt-8 border-t border-blue-200/60 flex flex-col sm:flex-row items-center justify-between text-xs font-sans text-blue-950/70 font-medium gap-3 text-center sm:text-left">
+        <span>© {new Date().getFullYear()} amoristartsy &bull; handcrafted with love by Guna</span>
+        <span className="font-calligraphy text-base text-blue-900 font-bold">Every canvas tells a story</span>
       </div>
     </footer>
   );

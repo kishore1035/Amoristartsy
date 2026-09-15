@@ -65,23 +65,23 @@ export default function ArtworkModal({
           <div className="overflow-y-auto p-4 sm:p-8 pt-10 sm:pt-8 pr-12 sm:pr-16 space-y-4 sm:space-y-6">
             {/* Tags & Price */}
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                <span className="px-2.5 py-1 rounded-md bg-amber-500/15 border border-amber-500/30 text-amber-900 text-[10px] sm:text-xs font-mono uppercase tracking-wider font-semibold">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 text-xs font-sans font-medium">
                   {artwork.category}
                 </span>
-                <span className="px-2.5 py-1 rounded-md bg-rose-500/15 border border-rose-500/30 text-accent-terracotta text-[10px] sm:text-xs font-mono capitalize font-semibold">
-                  {artwork.canvasShape} Canvas
+                <span className="px-3 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-accent-terracotta text-sm font-calligraphy font-bold">
+                  {artwork.canvasShape} canvas
                 </span>
               </div>
 
-              <span className="px-3 py-1 rounded-full bg-amber-500 text-white font-mono font-bold text-[11px] sm:text-xs shadow-sm">
-                ₹{artwork.price} ({artwork.inStock ? "In Stock" : "Custom Order"})
+              <span className="px-3.5 py-1 rounded-full bg-amber-500 text-white font-sans font-bold text-xs shadow-warm-amber">
+                ₹{artwork.price} &bull; {artwork.inStock ? "Ready to ship" : "Made to order"}
               </span>
             </div>
 
             {/* Title */}
             <div>
-              <h2 className="text-xl sm:text-3xl font-bold font-display text-ink-main mb-1.5 sm:mb-2 leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-serif text-ink-main mb-2 leading-tight font-semibold">
                 {artwork.title}
               </h2>
               <p className="text-xs sm:text-sm text-ink-muted leading-relaxed font-sans">
@@ -90,26 +90,26 @@ export default function ArtworkModal({
             </div>
 
             {/* Guna's Story Note */}
-            <div className="p-3 sm:p-4 rounded-xl bg-white/80 border border-amber-900/10 shadow-sm">
-              <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-accent-terracotta mb-1 font-semibold">
-                <Heart className="w-3.5 h-3.5 shrink-0" />
-                <span>GUNA&apos;S STORY BEHIND THIS PIECE</span>
+            <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-900/10 shadow-xs">
+              <div className="flex items-center gap-2 text-sm font-calligraphy font-bold text-accent-terracotta mb-1.5">
+                <Heart className="w-4 h-4 shrink-0" />
+                <span className="text-base sm:text-lg">The Artist&apos;s Note &bull; Guna</span>
               </div>
-              <p className="text-xs text-ink-main italic leading-relaxed">
-                &quot;{artwork.story}&quot;
+              <p className="text-base sm:text-xl font-handwriting text-ink-main leading-relaxed">
+                &ldquo;{artwork.story}&rdquo;
               </p>
             </div>
 
             {/* Medium & Size */}
             <div>
-              <h4 className="text-[10px] sm:text-[11px] font-mono text-ink-muted uppercase tracking-widest mb-1.5 sm:mb-2 font-semibold">
+              <h4 className="text-xs font-sans font-semibold text-amber-900/80 mb-2">
                 Physical Canvas Details
               </h4>
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono">
-                <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white text-ink-main border border-amber-900/10 shadow-sm">
+              <div className="flex flex-wrap gap-2 text-xs font-sans">
+                <span className="px-3 py-1.5 rounded-xl bg-white text-ink-main border border-amber-900/10 shadow-xs">
                   {artwork.medium}
                 </span>
-                <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white text-amber-700 font-semibold border border-amber-900/10 shadow-sm">
+                <span className="px-3 py-1.5 rounded-xl bg-white text-amber-800 font-semibold border border-amber-900/10 shadow-xs">
                   {artwork.sizeDimensions}
                 </span>
               </div>
@@ -117,8 +117,8 @@ export default function ArtworkModal({
 
             {/* Color Palette Swatches */}
             <div>
-              <h4 className="text-[10px] sm:text-[11px] font-mono text-ink-muted uppercase tracking-widest mb-1.5 sm:mb-2 font-semibold">
-                Acrylic Color Palette
+              <h4 className="text-xs font-sans font-semibold text-amber-900/80 mb-2">
+                Hand-Mixed Acrylic Palette
               </h4>
               <div className="flex items-center gap-2.5 sm:gap-3">
                 {artwork.colorPalette.map((hex) => (

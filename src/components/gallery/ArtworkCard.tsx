@@ -100,7 +100,7 @@ export default function ArtworkCard({ artwork, onSelect, priority = false }: Art
 
             <Link
               href={`/order?item=${artwork.id}`}
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500 text-white font-semibold text-xs shadow-warm-amber hover:bg-amber-600 transition-all transform translate-y-2 group-hover:translate-y-0"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
@@ -108,19 +108,19 @@ export default function ArtworkCard({ artwork, onSelect, priority = false }: Art
             </Link>
           </div>
 
-          {/* Shape Tags */}
+          {/* Shape & Category Tags */}
           <div className="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 z-20 flex flex-wrap gap-1 sm:gap-1.5">
-            <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-white/90 border border-amber-900/10 backdrop-blur-md text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-amber-800 font-semibold">
+            <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-white/95 border border-amber-900/10 backdrop-blur-md text-[10px] sm:text-[11px] font-sans text-amber-900 font-semibold shadow-xs">
               {artwork.category}
             </span>
-            <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-white/90 border border-amber-900/10 backdrop-blur-md text-[9px] sm:text-[10px] font-mono capitalize text-accent-terracotta font-semibold">
-              {artwork.canvasShape}
+            <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-white/95 border border-amber-900/10 backdrop-blur-md text-xs font-calligraphy text-accent-terracotta font-bold shadow-xs">
+              {artwork.canvasShape} canvas
             </span>
           </div>
 
           {/* Price Badge */}
           <div className="absolute top-2.5 sm:top-3 right-2.5 sm:right-3 z-20">
-            <span className="px-2.5 py-1 rounded-md bg-amber-500 text-white font-mono font-bold text-xs shadow-sm">
+            <span className="px-3 py-1 rounded-full bg-amber-500 text-white font-sans font-bold text-xs shadow-warm-amber">
               ₹{artwork.price}
             </span>
           </div>
@@ -129,10 +129,10 @@ export default function ArtworkCard({ artwork, onSelect, priority = false }: Art
         {/* Card Footer Info */}
         <div className="p-4 sm:p-5 flex flex-col justify-between" onClick={() => onSelect(artwork)}>
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-ink-main font-display truncate group-hover:text-amber-700 transition-colors">
+            <h3 className="text-lg sm:text-xl font-serif font-semibold text-ink-main truncate group-hover:text-amber-700 transition-colors">
               {artwork.title}
             </h3>
-            <p className="text-xs text-ink-muted line-clamp-2 mt-1 font-sans">
+            <p className="text-xs text-ink-muted line-clamp-2 mt-1.5 font-sans leading-relaxed">
               {artwork.description}
             </p>
           </div>
@@ -148,9 +148,9 @@ export default function ArtworkCard({ artwork, onSelect, priority = false }: Art
               ))}
             </div>
 
-            <div className="flex items-center gap-1 text-[10px] font-mono text-ink-muted font-medium">
+            <div className="flex items-center gap-1 text-xs font-calligraphy text-amber-900/80 font-bold">
               <Sparkles className="w-3 h-3 text-amber-600 shrink-0" />
-              <span className="truncate max-w-[120px]">{artwork.sizeDimensions}</span>
+              <span className="truncate max-w-[130px]">{artwork.sizeDimensions}</span>
             </div>
           </div>
         </div>
