@@ -10,9 +10,10 @@ import { motion } from "framer-motion";
 interface ArtworkCardProps {
   artwork: Artwork;
   onSelect: (artwork: Artwork) => void;
+  priority?: boolean;
 }
 
-export default function ArtworkCard({ artwork, onSelect }: ArtworkCardProps) {
+export default function ArtworkCard({ artwork, onSelect, priority = false }: ArtworkCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transformStyle, setTransformStyle] = useState(
     "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)"
@@ -73,7 +74,8 @@ export default function ArtworkCard({ artwork, onSelect }: ArtworkCardProps) {
             src={artwork.image}
             alt={artwork.title}
             fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+            priority={priority}
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
 

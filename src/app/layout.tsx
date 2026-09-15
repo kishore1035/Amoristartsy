@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import CustomCursor from "@/components/ui/CustomCursor";
+import ServiceWorkerCleaner from "@/components/utils/ServiceWorkerCleaner";
 import { AudioProvider } from "@/context/AudioContext";
 
 export const metadata: Metadata = {
@@ -22,6 +23,11 @@ export const metadata: Metadata = {
     description: "Handcrafted physical mini-canvas acrylic pieces for direct order.",
     type: "website",
   },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -32,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased selection:bg-amber-400 selection:text-black">
+        <ServiceWorkerCleaner />
         <AudioProvider>
           <CustomCursor />
           {children}

@@ -39,6 +39,7 @@ export default function Navbar() {
               src="/logo.png"
               alt="amoristartsy - Guna"
               fill
+              priority
               className="object-contain p-0.5"
             />
           </div>

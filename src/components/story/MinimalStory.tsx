@@ -87,6 +87,7 @@ export default function MinimalStory() {
                 src="/artworks/raincoat_duo.jpg"
                 alt="Raincoat Duo Mini Canvas"
                 fill
+                priority
                 className="object-cover"
                 sizes="400px"
               />

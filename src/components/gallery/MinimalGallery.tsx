@@ -111,11 +111,12 @@ export default function MinimalGallery({ onSelectArtwork }: MinimalGalleryProps)
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative min-h-[350px]"
       >
         <AnimatePresence mode="popLayout">
-          {visibleArtworks.map((artwork) => (
+          {visibleArtworks.map((artwork, index) => (
             <ArtworkCard
               key={artwork.id}
               artwork={artwork}
               onSelect={onSelectArtwork}
+              priority={index < 6}
             />
           ))}
         </AnimatePresence>
