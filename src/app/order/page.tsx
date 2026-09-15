@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function OrderPage() {
   return (
-    <main className="relative min-h-screen bg-background text-ink-main selection:bg-primary-500 selection:text-black overflow-x-hidden">
+    <main className="relative min-h-screen bg-background text-ink-main selection:bg-amber-200 selection:text-amber-950 overflow-x-hidden">
       {/* Header */}
       <Navbar />
 

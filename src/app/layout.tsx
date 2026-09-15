@@ -37,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased selection:bg-amber-400 selection:text-black">
+      <body className="antialiased selection:bg-amber-200 selection:text-amber-950">
         <ServiceWorkerCleaner />
         <AudioProvider>
           <CustomCursor />
