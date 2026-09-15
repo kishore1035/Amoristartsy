@@ -129,7 +129,7 @@ export default function ArtworkCard({ artwork, onSelect, priority = false }: Art
         {/* Card Footer Info */}
         <div className="p-4 sm:p-5 flex flex-col justify-between" onClick={() => onSelect(artwork)}>
           <div>
-            <h3 className="text-lg sm:text-xl font-serif font-bold text-ink-main truncate group-hover:text-amber-700 transition-colors">
+            <h3 className="text-lg sm:text-xl font-display font-bold text-ink-main truncate group-hover:text-amber-700 transition-colors">
               {artwork.title}
             </h3>
             <p className="text-xs text-ink-muted line-clamp-2 mt-1.5 font-sans leading-relaxed">
