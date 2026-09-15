@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-outfit: 'Outfit', sans-serif;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #faf7f2;
+  color: #2d261e;
+}
+
+body {
+  font-family: var(--font-outfit);
+  overflow-x: hidden;
+  background-color: #faf7f2;
+  color: #2d261e;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Glassmorphism Panel Class for Warm Light Pastel Studio Vibe */
+.glass-panel {
+  background: rgba(254, 252, 248, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(225, 212, 195, 0.7);
+  box-shadow: 0 10px 30px 0 rgba(140, 110, 80, 0.07);
+}
+
+/* Custom Glassmorphism Pastel Blue Panel for Bottom Section */
+.glass-panel-blue {
+  background: rgba(232, 242, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(185, 210, 245, 0.7);
+  box-shadow: 0 10px 30px 0 rgba(80, 110, 160, 0.1);
+}
+
+/* Custom Warm Text Glow Utilities */
+.text-glow-amber {
+  text-shadow: 0 2px 14px rgba(217, 119, 6, 0.25);
+}
+
+.text-glow-terracotta {
+  text-shadow: 0 2px 14px rgba(200, 80, 50, 0.25);
+}
+
+.text-glow-blue {
+  text-shadow: 0 2px 16px rgba(59, 130, 246, 0.3);
+}
+
+/* Custom Scrollbar for Warm Pastel Theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #faf7f2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2d7c7;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}

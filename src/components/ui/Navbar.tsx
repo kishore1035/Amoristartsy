@@ -1,0 +1,141 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import SoundController from "./SoundController";
+import { Layers, Compass, ShoppingBag, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled
+          ? "py-3 bg-white/95 backdrop-blur-xl border-b border-amber-900/10 shadow-sm"
+          : "py-4 sm:py-5 bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
+        {/* Artist Brand Logo & Name */}
+        <Link
+          href="/"
+          onClick={() => setMobileMenuOpen(false)}
+          className="flex items-center gap-2.5 sm:gap-3 group shrink-0"
+        >
+          <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-amber-900/15 shadow-sm group-hover:scale-105 transition-transform bg-amber-50 shrink-0">
+            <Image
+              src="/logo.png"
+              alt="amoristartsy - Guna"
+              fill
+              className="object-contain p-0.5"
+            />
+          </div>
+          <div>
+            <span className="font-display font-bold text-ink-main text-sm sm:text-base tracking-wider block leading-tight">
+              GUNA <span className="text-amber-600">//</span> AMORISTARTSY
+            </span>
+            <span className="font-mono text-[9px] sm:text-[10px] text-amber-700 block tracking-widest uppercase font-medium">
+              Handmade Pieces of Joy
+            </span>
+          </div>
+        </Link>
+
+        {/* Center Navigation Links (Desktop) */}
+        <nav className="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest text-ink-main font-medium">
+          <Link
+            href="/#gallery"
+            className="hover:text-amber-700 transition-colors flex items-center gap-1.5"
+          >
+            <Layers className="w-3.5 h-3.5 text-amber-600" />
+            <span>MINI-CANVAS GALLERY</span>
+          </Link>
+
+          <Link
+            href="/#story"
+            className="hover:text-amber-700 transition-colors flex items-center gap-1.5"
+          >
+            <Compass className="w-3.5 h-3.5 text-accent-terracotta" />
+            <span>BIO & STORY</span>
+          </Link>
+        </nav>
+
+        {/* Right Actions: Sound Synthesizer, Desktop Order Button & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2.5 sm:gap-4">
+          <SoundController />
+
+          <Link
+            href="/order"
+            className="hidden sm:inline-flex items-center gap-2.5 px-5 sm:px-6 py-2 sm:py-2.5 rounded-2xl bg-amber-500 text-white font-mono font-bold text-xs hover:bg-amber-600 transition-all shadow-warm-amber active:scale-95 whitespace-nowrap"
+          >
+            <ShoppingBag className="w-4 h-4 text-white shrink-0" />
+            <span>ORDER CANVASES</span>
+          </Link>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-xl bg-white/80 border border-amber-900/15 text-ink-main hover:bg-amber-50 transition-colors shadow-sm"
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden bg-white/98 border-b border-amber-900/10 shadow-lg overflow-hidden backdrop-blur-xl"
+          >
+            <div className="px-6 py-5 space-y-4 font-mono text-xs">
+              <Link
+                href="/#gallery"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 py-2 text-ink-main hover:text-amber-700 font-medium border-b border-amber-900/5"
+              >
+                <Layers className="w-4 h-4 text-amber-600" />
+                <span>MINI-CANVAS GALLERY</span>
+              </Link>
+
+              <Link
+                href="/#story"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 py-2 text-ink-main hover:text-amber-700 font-medium border-b border-amber-900/5"
+              >
+                <Compass className="w-4 h-4 text-accent-terracotta" />
+                <span>BIO & STORY</span>
+              </Link>
+
+              <Link
+                href="/order"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2.5 w-full py-3 rounded-xl bg-amber-500 text-white font-bold shadow-warm-amber active:scale-95"
+              >
+                <ShoppingBag className="w-4 h-4" />
+                <span>ORDER CANVASES</span>
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
