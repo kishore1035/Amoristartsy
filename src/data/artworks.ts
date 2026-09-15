@@ -637,7 +637,7 @@ export const ARTWORKS: Artwork[] = [
   },
   {
     "id": "canvas-20",
-    "title": "Insaan Hindi Typography",
+    "title": "Insane (iNसेन) Typography",
     "category": "Typography",
     "canvasShape": "rectangle",
     "sizeDimensions": "Cardboard Mini Canvas",
@@ -645,7 +645,7 @@ export const ARTWORKS: Artwork[] = [
     "year": "2026",
     "price": 300,
     "inStock": true,
-    "description": "Bold yellow Hindi Devanagari typography spelling 'इंसान' (Insaan) on a warm rust orange background.",
+    "description": "Bold yellow Hinglish typography blending Latin 'iN' and Devanagari 'सेन' to spell 'INSANE' on a warm rust orange background.",
     "image": "/artworks/collection/art_20.jpg",
     "depthMap": "/artworks/cyber_samurai_depth.svg",
     "colorPalette": [
@@ -654,12 +654,12 @@ export const ARTWORKS: Artwork[] = [
       "#b4b4a0",
       "#c8a000"
     ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "story": "A witty bilingual fusion piece blending Latin 'iN' and Devanagari 'सेन' ('Insane'), hand-painted with acrylic pigments on mini canvas.",
     "featured": false
   },
   {
     "id": "canvas-21",
-    "title": "Helna Hindi Typography",
+    "title": "Hell Nah (हेलNA) Typography",
     "category": "Typography",
     "canvasShape": "rectangle",
     "sizeDimensions": "Cardboard Mini Canvas",
@@ -667,7 +667,7 @@ export const ARTWORKS: Artwork[] = [
     "year": "2026",
     "price": 300,
     "inStock": true,
-    "description": "Vibrant yellow graphic Hindi Devanagari typography reading 'हेलना' painted against a deep forest green backdrop.",
+    "description": "Vibrant yellow graphic Hinglish typography combining Devanagari 'हेल' and Latin 'NA' spelling 'HELL NAH' against a deep forest green backdrop.",
     "image": "/artworks/collection/art_21.jpg",
     "depthMap": "/artworks/cyber_samurai_depth.svg",
     "colorPalette": [
@@ -676,7 +676,7 @@ export const ARTWORKS: Artwork[] = [
       "#b4b4a0",
       "#dcb400"
     ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "story": "A bold bilingual slang piece merging Devanagari 'हेल' and Latin 'NA' ('Hell Nah'), hand-painted in vivid yellow over rich forest green.",
     "featured": false
   },
   {
