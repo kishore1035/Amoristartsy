@@ -42,7 +42,7 @@ export default function MinimalHero() {
         <motion.div variants={itemVariants} className="inline-block">
           <div className="inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 rounded-full bg-white/90 border border-amber-900/15 text-amber-800 shadow-sm mb-5 sm:mb-6">
             <Heart className="w-4 h-4 text-accent-terracotta shrink-0" />
-            <span className="font-calligraphy text-base sm:text-xl font-bold text-accent-terracotta tracking-wide">
+            <span className="font-sans text-xs sm:text-sm font-medium text-accent-terracotta tracking-wide">
               amoristartsy &bull; handcrafted pieces of joy
             </span>
           </div>

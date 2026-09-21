@@ -29,15 +29,15 @@ export default function OrderPage() {
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/30 text-amber-800 text-xs mb-4">
             <Heart className="w-3.5 h-3.5 text-accent-terracotta" />
-            <span className="font-calligraphy text-base sm:text-lg font-bold">Direct from Guna&apos;s Studio</span>
+            <span className="font-sans text-xs sm:text-sm font-medium">Direct from Guna&apos;s Studio</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-serif text-ink-main mb-4 font-normal tracking-tight">
-            Order Mini <span className="font-calligraphy text-5xl sm:text-7xl text-amber-600 italic">Canvases</span>
+            Order Your Favorite <span className="font-calligraphy text-5xl sm:text-7xl text-amber-600 italic">Paintings</span>
           </h1>
 
           <p className="text-base text-ink-muted font-sans leading-relaxed">
-            Select your favorite hand-painted physical mini canvases from Guna&apos;s gallery collection. All pieces are available for purchase directly from Guna with direct WhatsApp confirmation.
+            Select your favorite hand-painted physical artworks from Guna&apos;s gallery collection. All pieces are available for purchase directly from Guna with direct Instagram DM confirmation.
           </p>
         </div>
 

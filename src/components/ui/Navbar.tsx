@@ -47,7 +47,7 @@ export default function Navbar() {
             <span className="font-serif font-bold text-ink-main text-lg sm:text-xl tracking-normal block leading-tight">
               Guna <span className="text-amber-600 font-calligraphy text-2xl sm:text-3xl font-normal">&bull; amoristartsy</span>
             </span>
-            <span className="font-calligraphy text-sm sm:text-base text-amber-800 block font-semibold">
+            <span className="font-sans text-[11px] sm:text-xs text-amber-800/80 block font-medium tracking-wide">
               Handmade Pieces of Joy
             </span>
           </div>
@@ -81,7 +81,7 @@ export default function Navbar() {
             className="hidden sm:inline-flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 rounded-2xl bg-amber-500 text-white font-sans font-semibold text-xs sm:text-sm hover:bg-amber-600 transition-all shadow-warm-amber active:scale-95 whitespace-nowrap"
           >
             <ShoppingBag className="w-4 h-4 text-white shrink-0" />
-            <span>Order Canvases</span>
+            <span>Order Paintings</span>
           </Link>
 
           {/* Mobile Hamburger Button */}
@@ -130,7 +130,7 @@ export default function Navbar() {
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-amber-500 text-white font-semibold shadow-warm-amber"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>Order Mini Canvases</span>
+                <span>Order Paintings</span>
               </Link>
             </div>
           </motion.div>

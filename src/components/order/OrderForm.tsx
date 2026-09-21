@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { ARTWORKS, Artwork } from "@/data/artworks";
 import ArtworkModal from "@/components/gallery/ArtworkModal";
-import { ShoppingBag, Plus, Minus, Check, MapPin, Send, Search, Eye, ArrowDown } from "lucide-react";
+import { ShoppingBag, Plus, Minus, Check, MapPin, Send, Search, Eye, ArrowDown, Instagram } from "lucide-react";
 
 const CATEGORIES = ["All", "Pop Culture", "Traditional", "Typography", "Landscapes & Illustrative"] as const;
 const INITIAL_VISIBLE_COUNT = 12;
@@ -94,8 +94,8 @@ export default function OrderForm() {
     0
   );
 
-  // Generate WhatsApp Order Message
-  const handleWhatsAppOrder = (e: React.FormEvent) => {
+  // Generate Instagram Order Message & Redirect
+  const handleInstagramOrder = (e: React.FormEvent) => {
     e.preventDefault();
     if (selectedItems.length === 0) return;
 
@@ -108,12 +108,14 @@ export default function OrderForm() {
       )
       .join("\n");
 
-    const message = `Hi Guna! I'd like to order the following mini canvases:\n\n${itemsSummary}\n\n*Total Amount:* ₹${grandTotal}\n\n*Delivery Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}, ${city} - ${pincode}\n${notes ? `Notes: ${notes}` : ""}\n\nThank you!`;
+    const message = `Hi Guna! I'd like to order the following from your studio:\n\n${itemsSummary}\n\n*Total Amount:* ₹${grandTotal}\n\n*Delivery Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}, ${city} - ${pincode}\n${notes ? `Notes: ${notes}\n` : ""}\nThank you!`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/918904865499?text=${encodedMessage}`;
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(message).catch(() => {});
+    }
 
-    window.open(whatsappUrl, "_blank");
+    // Opens Instagram DM directly
+    window.open("https://ig.me/m/amoristartsy", "_blank");
     setOrderSent(true);
   };
 
@@ -132,7 +134,7 @@ export default function OrderForm() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
             <h3 className="text-xl sm:text-2xl font-serif font-semibold text-ink-main flex items-center gap-2">
               <ShoppingBag className="w-5 h-5 text-amber-600 shrink-0" />
-              <span>Choose Handcrafted Mini Canvases</span>
+              <span>Choose Handcrafted Paintings</span>
             </h3>
 
             <span className="self-start sm:self-auto text-xs font-sans text-amber-900 bg-amber-500/15 px-3.5 py-1 rounded-full border border-amber-500/30 font-medium">
@@ -335,7 +337,7 @@ export default function OrderForm() {
             )}
 
             {/* Delivery Form */}
-            <form onSubmit={handleWhatsAppOrder} className="space-y-4">
+            <form onSubmit={handleInstagramOrder} className="space-y-4">
               <div>
                 <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
                   Your Full Name *
@@ -345,7 +347,7 @@ export default function OrderForm() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Kishore"
+                  placeholder="e.g. Guna"
                   className="w-full px-4 py-2.5 rounded-xl bg-white border border-amber-900/15 text-ink-main text-xs font-sans focus:border-amber-500 focus:outline-none shadow-sm"
                 />
               </div>
@@ -353,7 +355,7 @@ export default function OrderForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
-                    WhatsApp Number *
+                    Phone Number *
                   </label>
                   <input
                     type="tel"
@@ -425,30 +427,44 @@ export default function OrderForm() {
               <button
                 type="submit"
                 disabled={selectedItems.length === 0}
-                className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2 ${
+                className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2.5 ${
                   selectedItems.length > 0
-                    ? "bg-amber-500 text-white font-semibold hover:bg-amber-600 shadow-warm-amber active:scale-95"
+                    ? "bg-gradient-to-r from-amber-600 via-rose-500 to-purple-600 text-white font-semibold hover:opacity-95 shadow-md active:scale-95"
                     : "bg-gray-200 text-ink-muted cursor-not-allowed border border-gray-300"
                 }`}
               >
-                <Send className="w-4 h-4" />
+                <Instagram className="w-4 h-4" />
                 <span>
                   {selectedItems.length > 0
-                    ? `Place Order via WhatsApp (₹${grandTotal})`
-                    : "Select Canvases to Order"}
+                    ? `Place Order via Instagram DM (₹${grandTotal})`
+                    : "Select Artworks to Order"}
                 </span>
               </button>
             </form>
 
             {orderSent && (
-              <div className="mt-4 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-900 text-xs font-sans flex items-center gap-2">
-                <Check className="w-4 h-4 text-amber-700 shrink-0" />
-                <span>WhatsApp order pre-filled! Send the message in WhatsApp to confirm.</span>
+              <div className="mt-4 p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-950 text-xs font-sans space-y-2">
+                <div className="flex items-center gap-2 font-semibold text-amber-900">
+                  <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Order details copied to clipboard!</span>
+                </div>
+                <p className="text-ink-muted text-xs leading-relaxed">
+                  Instagram DM has been opened in a new tab. Paste your order summary in the chat with <strong>@amoristartsy</strong> to confirm your pieces!
+                </p>
+                <a
+                  href="https://instagram.com/amoristartsy"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-amber-900/15 text-xs text-amber-900 hover:text-rose-600 font-medium transition-colors"
+                >
+                  <Instagram className="w-3.5 h-3.5 text-rose-500" />
+                  <span>Open @amoristartsy on Instagram</span>
+                </a>
               </div>
             )}
 
-            <div className="mt-6 pt-4 border-t border-amber-900/10 text-sm font-calligraphy text-amber-900 font-bold text-center">
-              Handmade with love by Guna &bull; Direct WhatsApp: +91 89048 65499
+            <div className="mt-6 pt-4 border-t border-amber-900/10 text-xs font-sans text-ink-muted text-center">
+              Handmade with love by Guna &bull; Instagram: <a href="https://instagram.com/amoristartsy" target="_blank" rel="noreferrer" className="text-amber-800 hover:underline font-semibold">@amoristartsy</a>
             </div>
           </div>
         </div>

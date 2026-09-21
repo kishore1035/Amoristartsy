@@ -26,7 +26,7 @@ export default function Footer() {
               <span className="font-serif font-bold text-ink-main text-xl sm:text-2xl block leading-tight">
                 amoristartsy
               </span>
-              <span className="font-calligraphy text-base text-blue-900 block font-bold">
+              <span className="font-sans text-xs sm:text-sm text-blue-900/80 block font-medium">
                 Handmade pieces of joy by Guna
               </span>
             </div>
@@ -41,7 +41,7 @@ export default function Footer() {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-white font-semibold text-xs sm:text-sm hover:bg-amber-600 transition-all shadow-warm-amber active:scale-95"
           >
             <ShoppingBag className="w-4 h-4 text-white" />
-            <span>Order Mini Canvases</span>
+            <span>Order Paintings</span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
@@ -73,23 +73,13 @@ export default function Footer() {
             </h4>
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href="https://wa.me/918904865499"
+                href="https://instagram.com/amoristartsy"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs font-sans hover:bg-blue-700 transition-all shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-rose-500 to-purple-600 text-white font-semibold text-xs font-sans hover:opacity-95 transition-all shadow-sm"
               >
-                <MessageCircle className="w-4 h-4 text-white" />
-                <span>WhatsApp: +91 89048 65499</span>
-              </a>
-
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-blue-200 text-xs font-sans text-ink-main hover:text-amber-600 hover:border-amber-400 transition-colors shadow-sm font-medium"
-              >
-                <Instagram className="w-4 h-4 text-accent-terracotta" />
-                <span>@amoristartsy</span>
+                <Instagram className="w-4 h-4 text-white" />
+                <span>DM @amoristartsy on Instagram</span>
               </a>
             </div>
           </div>
