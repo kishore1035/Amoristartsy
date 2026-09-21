@@ -368,7 +368,7 @@ export default function OrderForm() {
             )}
 
             {/* Delivery Form */}
-            <form onSubmit={handleInstagramOrder} className="space-y-4">
+            <form onSubmit={handleWhatsAppOrder} className="space-y-4">
               <div>
                 <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
                   Your Full Name *
