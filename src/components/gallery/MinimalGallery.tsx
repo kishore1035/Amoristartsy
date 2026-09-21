@@ -57,7 +57,7 @@ export default function MinimalGallery({ onSelectArtwork }: MinimalGalleryProps)
         </div>
 
         <p className="text-sm text-ink-muted max-w-md font-sans leading-relaxed">
-          Browse Guna&apos;s collection of <strong className="text-amber-900 font-semibold">{ARTWORKS.length} hand-painted physical mini canvases</strong>. Each piece is crafted with acrylics on woven canvas board, ready to bring warmth to your desk or wall.
+          Browse Guna&apos;s collection of <strong className="text-amber-900 font-semibold">{ARTWORKS.length} hand-painted physical artworks</strong>. Each piece is crafted with acrylics on woven canvas board, ready to bring warmth to your desk or wall.
         </p>
       </div>
 
@@ -132,7 +132,7 @@ export default function MinimalGallery({ onSelectArtwork }: MinimalGalleryProps)
             className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-white border border-amber-900/15 text-ink-main hover:border-amber-500 hover:text-amber-700 text-sm font-sans font-medium transition-all backdrop-blur-md shadow-sm active:scale-95"
           >
             <Sparkles className="w-4 h-4 text-amber-600" />
-            <span>Discover More Canvases ({visibleArtworks.length} of {filteredArtworks.length})</span>
+            <span>Discover More Artworks ({visibleArtworks.length} of {filteredArtworks.length})</span>
           </button>
         </div>
       )}

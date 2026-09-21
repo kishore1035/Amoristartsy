@@ -192,7 +192,7 @@ export default function OrderForm() {
             <div className="p-8 text-center rounded-2xl glass-panel border border-amber-900/15">
               <Search className="w-8 h-8 text-ink-muted mx-auto mb-2" />
               <p className="text-xs font-mono text-ink-muted">
-                No mini canvases found matching &quot;{searchQuery}&quot;. Try another search term!
+                No artworks found matching &quot;{searchQuery}&quot;. Try another search term!
               </p>
             </div>
           ) : (
@@ -314,7 +314,7 @@ export default function OrderForm() {
               <div className="p-5 sm:p-6 rounded-2xl bg-white/70 border border-amber-900/10 text-center mb-6 shadow-sm">
                 <ShoppingBag className="w-8 h-8 text-ink-muted mx-auto mb-2" />
                 <p className="text-xs font-sans text-ink-muted leading-relaxed">
-                  No mini canvases selected yet. Tap any canvas to see details or click &quot;Add&quot;!
+                  No artworks selected yet. Tap any painting to see details or click &quot;Add&quot;!
                 </p>
               </div>
             ) : (

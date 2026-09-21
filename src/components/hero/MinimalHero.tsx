@@ -55,7 +55,7 @@ export default function MinimalHero() {
         >
           Handpainted <br />
           <span className="font-calligraphy text-5xl sm:text-7xl md:text-8xl bg-gradient-to-r from-amber-600 via-accent-terracotta to-amber-700 bg-clip-text text-transparent inline-block pt-1">
-            Mini Canvases
+            Artworks
           </span>
         </motion.h1>
 
@@ -64,7 +64,7 @@ export default function MinimalHero() {
           variants={itemVariants}
           className="text-sm sm:text-lg text-ink-muted font-sans font-light leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto px-2"
         >
-          Handcrafted mini acrylic canvases painted with pastel warmth, color, and love by Guna. Bringing pop culture, traditional motifs, and cozy moments to your favorite desk spaces.
+          Handcrafted acrylic artworks painted with pastel warmth, color, and love by Guna. Bringing pop culture, traditional motifs, and cozy moments to your favorite spaces.
         </motion.p>
 
         {/* Action Buttons */}

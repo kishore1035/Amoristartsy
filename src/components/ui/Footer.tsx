@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
 
           <p className="text-xs sm:text-sm text-ink-muted font-sans leading-relaxed mb-6">
-            Handcrafted mini acrylic canvases painted with hope, warm pastel colors, and love. Each piece is unique and ready to bring a smile to your space.
+            Handcrafted acrylic artworks painted with hope, warm pastel colors, and love. Each piece is unique and ready to bring a smile to your space.
           </p>
 
           <Link
@@ -51,7 +51,7 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-sans font-semibold text-blue-950 uppercase tracking-wider mb-3 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-              <span>Featured Mini Canvases</span>
+              <span>Featured Artworks</span>
             </h4>
             <div className="flex flex-wrap gap-2 max-w-sm">
               {featuredArtworks.map((item) => (
