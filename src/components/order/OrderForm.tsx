@@ -114,9 +114,15 @@ export default function OrderForm() {
       navigator.clipboard.writeText(message).catch(() => {});
     }
 
-    // Opens Instagram DM directly
-    window.open("https://ig.me/m/amoristartsy", "_blank");
     setOrderSent(true);
+
+    // On mobile devices, window.location.href triggers native App Links directly into the Instagram App
+    const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = "https://ig.me/m/amoristartsy";
+    } else {
+      window.open("https://ig.me/m/amoristartsy", "_blank");
+    }
   };
 
   const scrollToCheckout = () => {
