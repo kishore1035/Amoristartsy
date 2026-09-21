@@ -172,7 +172,7 @@ export default function ArtworkModal({
                 className="w-full py-3 sm:py-3.5 rounded-xl bg-amber-500 text-white font-semibold text-xs sm:text-sm hover:bg-amber-600 transition-all shadow-warm-amber flex items-center justify-center gap-2 active:scale-95"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>Order This Mini Canvas (₹{artwork.price})</span>
+                <span>Order This Painting (₹{artwork.price})</span>
               </Link>
             )}
           </div>
