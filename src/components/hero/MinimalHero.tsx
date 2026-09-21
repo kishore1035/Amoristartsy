@@ -43,7 +43,7 @@ export default function MinimalHero() {
           <div className="inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 rounded-full bg-white/90 border border-amber-900/15 text-amber-800 shadow-sm mb-5 sm:mb-6">
             <Heart className="w-4 h-4 text-accent-terracotta shrink-0" />
             <span className="font-sans text-xs sm:text-sm font-medium text-accent-terracotta tracking-wide">
-              amoristartsy &bull; handcrafted pieces of joy
+              amoristartsy &bull; handmade pieces of joy
             </span>
           </div>
         </motion.div>
@@ -64,7 +64,7 @@ export default function MinimalHero() {
           variants={itemVariants}
           className="text-sm sm:text-lg text-ink-muted font-sans font-light leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto px-2"
         >
-          Handcrafted acrylic artworks painted with pastel warmth, color, and love by Guna. Bringing pop culture, traditional motifs, and cozy moments to your favorite spaces.
+          Handmade acrylic artworks painted with pastel warmth, color, and love by Guna. Bringing pop culture, traditional motifs, and cozy moments to your favorite spaces.
         </motion.p>
 
         {/* Action Buttons */}

@@ -94,9 +94,9 @@ export default function OrderForm() {
     0
   );
 
-  // Generate WhatsApp Order (1-Click Auto-Fill using @gunashree.r username, zero phone numbers exposed!)
-  const handleWhatsAppOrder = (e: React.FormEvent) => {
-    e.preventDefault();
+  // Generate WhatsApp Order via Universal Share (Zero phone numbers exposed)
+  const handleWhatsAppOrder = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (selectedItems.length === 0) return;
 
     let itemsSummary = selectedItems
@@ -110,8 +110,12 @@ export default function OrderForm() {
 
     const message = `Hi Guna! I'd like to order from your studio:\n\n${itemsSummary}\n\n*Total Amount:* ₹${grandTotal}\n\n*Delivery Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}, ${city} - ${pincode}\n${notes ? `Notes: ${notes}\n` : ""}\nThank you!`;
 
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(message).catch(() => {});
+    }
+
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/gunashree.r?text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedMessage}`;
 
     const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
@@ -122,8 +126,9 @@ export default function OrderForm() {
     setOrderSent("whatsapp");
   };
 
-  // Generate Instagram Order Message & Redirect
-  const handleInstagramOrder = () => {
+  // Generate Instagram Order Message & Redirect (1-Click with username @amoristartsy)
+  const handleInstagramOrder = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (selectedItems.length === 0) return;
 
     let itemsSummary = selectedItems
@@ -368,7 +373,7 @@ export default function OrderForm() {
             )}
 
             {/* Delivery Form */}
-            <form onSubmit={handleWhatsAppOrder} className="space-y-4">
+            <form onSubmit={handleInstagramOrder} className="space-y-4">
               <div>
                 <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
                   Your Full Name *
@@ -461,30 +466,30 @@ export default function OrderForm() {
                   disabled={selectedItems.length === 0}
                   className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2.5 ${
                     selectedItems.length > 0
-                      ? "bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-md active:scale-95"
+                      ? "bg-gradient-to-r from-amber-600 via-rose-500 to-purple-600 hover:opacity-95 text-white font-semibold shadow-md active:scale-95"
                       : "bg-gray-200 text-ink-muted cursor-not-allowed border border-gray-300"
                   }`}
                 >
-                  <MessageCircle className="w-4 h-4 text-white" />
+                  <Instagram className="w-4 h-4 text-white" />
                   <span>
                     {selectedItems.length > 0
-                      ? `Place Order via WhatsApp (₹${grandTotal})`
+                      ? `Place Order via Instagram DM (@amoristartsy)`
                       : "Select Artworks to Order"}
                   </span>
                 </button>
 
                 <button
                   type="button"
-                  onClick={handleInstagramOrder}
+                  onClick={handleWhatsAppOrder}
                   disabled={selectedItems.length === 0}
                   className={`w-full py-3 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
                     selectedItems.length > 0
-                      ? "bg-white border border-rose-300 text-rose-700 hover:bg-rose-50 active:scale-95 shadow-xs"
+                      ? "bg-emerald-50 border border-emerald-300 text-emerald-800 hover:bg-emerald-100 active:scale-95 shadow-xs"
                       : "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
                   }`}
                 >
-                  <Instagram className="w-4 h-4 text-rose-500" />
-                  <span>Or Order via Instagram DM (@amoristartsy)</span>
+                  <MessageCircle className="w-4 h-4 text-emerald-600" />
+                  <span>Or Share Order via WhatsApp</span>
                 </button>
               </div>
             </form>
@@ -493,28 +498,28 @@ export default function OrderForm() {
               <div className="mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-950 text-xs font-sans space-y-1.5">
                 <div className="flex items-center gap-2 font-semibold text-emerald-900">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>WhatsApp order pre-filled!</span>
+                  <span>Order details copied & WhatsApp opened!</span>
                 </div>
                 <p className="text-emerald-900/85 text-xs leading-relaxed">
-                  Your chat with <strong>@gunashree.r</strong> has opened with all details filled in. Just hit <strong>Send</strong> to confirm!
+                  Your full order summary is copied to your clipboard. Pick Guna or search in WhatsApp to send your order!
                 </p>
               </div>
             )}
 
             {orderSent === "instagram" && (
-              <div className="mt-4 p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-950 text-xs font-sans space-y-2">
-                <div className="flex items-center gap-2 font-semibold text-amber-900">
+              <div className="mt-4 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-950 text-xs font-sans space-y-2">
+                <div className="flex items-center gap-2 font-semibold text-rose-900">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Order details copied to clipboard!</span>
+                  <span>Order copied to clipboard!</span>
                 </div>
                 <p className="text-ink-muted text-xs leading-relaxed">
-                  Instagram DM has been opened. Simply paste your order summary in the chat with <strong>@amoristartsy</strong> to confirm your pieces!
+                  Instagram DM has been opened with <strong>@amoristartsy</strong>. Simply paste your order summary in the chat to confirm your pieces!
                 </p>
                 <a
-                  href="https://instagram.com/amoristartsy"
+                  href="https://ig.me/m/amoristartsy"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-amber-900/15 text-xs text-amber-900 hover:text-rose-600 font-medium transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-rose-900/15 text-xs text-rose-900 hover:text-rose-600 font-medium transition-colors"
                 >
                   <Instagram className="w-3.5 h-3.5 text-rose-500" />
                   <span>Open @amoristartsy on Instagram</span>
@@ -525,9 +530,9 @@ export default function OrderForm() {
             <div className="mt-6 pt-4 border-t border-amber-900/10 text-xs font-sans text-ink-muted text-center flex flex-wrap items-center justify-center gap-2">
               <span>Handmade with love by Guna</span>
               <span>&bull;</span>
-              <a href="https://wa.me/gunashree.r" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline font-semibold">WhatsApp: @gunashree.r</a>
+              <a href="https://ig.me/m/amoristartsy" target="_blank" rel="noreferrer" className="text-rose-700 hover:underline font-semibold">Instagram: @amoristartsy</a>
               <span>&bull;</span>
-              <a href="https://instagram.com/amoristartsy" target="_blank" rel="noreferrer" className="text-rose-700 hover:underline font-semibold">Instagram: @amoristartsy</a>
+              <span className="text-emerald-800 font-medium">WhatsApp: @gunashree.r</span>
             </div>
           </div>
         </div>

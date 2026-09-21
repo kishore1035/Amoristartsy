@@ -52,7 +52,7 @@ export default function MinimalGallery({ onSelectArtwork }: MinimalGalleryProps)
             </span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif text-ink-main tracking-tight font-normal">
-            Handmade <span className="font-calligraphy text-4xl sm:text-6xl text-amber-600 italic">Canvas Collection</span>
+            Handmade <span className="font-calligraphy text-4xl sm:text-6xl text-amber-600 italic">Artworks</span>
           </h2>
         </div>
 

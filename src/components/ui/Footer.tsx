@@ -73,31 +73,26 @@ export default function Footer() {
             </h4>
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href="https://wa.me/gunashree.r"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold text-xs font-sans hover:bg-emerald-700 transition-all shadow-sm"
-              >
-                <MessageCircle className="w-4 h-4 text-white" />
-                <span>WhatsApp: @gunashree.r</span>
-              </a>
-
-              <a
-                href="https://instagram.com/amoristartsy"
+                href="https://ig.me/m/amoristartsy"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-rose-500 to-purple-600 text-white font-semibold text-xs font-sans hover:opacity-95 transition-all shadow-sm"
               >
                 <Instagram className="w-4 h-4 text-white" />
-                <span>Instagram: @amoristartsy</span>
+                <span>Instagram DM: @amoristartsy</span>
               </a>
+
+              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600/10 border border-emerald-600/25 text-emerald-900 font-semibold text-xs font-sans">
+                <MessageCircle className="w-4 h-4 text-emerald-600" />
+                <span>WhatsApp: @gunashree.r</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto pt-6 sm:pt-8 border-t border-blue-200/60 flex flex-col sm:flex-row items-center justify-between text-xs font-sans text-blue-950/70 font-medium gap-3 text-center sm:text-left">
-        <span>© {new Date().getFullYear()} amoristartsy &bull; handcrafted with love by Guna</span>
+        <span>© {new Date().getFullYear()} amoristartsy &bull; handmade with love by Guna</span>
         <span className="font-calligraphy text-base text-blue-900 font-bold">Every canvas tells a story</span>
       </div>
     </footer>
