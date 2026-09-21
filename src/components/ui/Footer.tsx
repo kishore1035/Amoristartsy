@@ -73,13 +73,23 @@ export default function Footer() {
             </h4>
             <div className="flex flex-wrap items-center gap-3">
               <a
+                href="https://wa.me/gunashree.r"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold text-xs font-sans hover:bg-emerald-700 transition-all shadow-sm"
+              >
+                <MessageCircle className="w-4 h-4 text-white" />
+                <span>WhatsApp: @gunashree.r</span>
+              </a>
+
+              <a
                 href="https://instagram.com/amoristartsy"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-rose-500 to-purple-600 text-white font-semibold text-xs font-sans hover:opacity-95 transition-all shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-rose-500 to-purple-600 text-white font-semibold text-xs font-sans hover:opacity-95 transition-all shadow-sm"
               >
                 <Instagram className="w-4 h-4 text-white" />
-                <span>DM @amoristartsy on Instagram</span>
+                <span>Instagram: @amoristartsy</span>
               </a>
             </div>
           </div>
