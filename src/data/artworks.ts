@@ -108,6 +108,28 @@ export const ARTWORKS: Artwork[] = [
     "featured": true
   },
   {
+    "id": "canvas-17",
+    "title": "Red Hearts on Vintage Book Page",
+    "category": "Typography",
+    "canvasShape": "heart",
+    "sizeDimensions": "6 x 8 inch Heart Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 150,
+    "inStock": true,
+    "description": "A vintage torn book page adorned with layered red paper heart cutouts creating a romantic collage.",
+    "image": "/artworks/collection/art_17.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#500000",
+      "#786450",
+      "#8c7864",
+      "#64503c"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
     "id": "canvas-19",
     "title": "Anatomical Heart on Vintage Page",
     "category": "Landscapes & Illustrative",
@@ -169,28 +191,6 @@ export const ARTWORKS: Artwork[] = [
       "#141400",
       "#3c3c28",
       "#003cb4"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": true
-  },
-  {
-    "id": "canvas-67",
-    "title": "Batman & Hello Kitty Duo",
-    "category": "Pop Culture",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Charming pop culture acrylic artwork depicting chibi Batman and Hello Kitty side by side on a bold red background.",
-    "image": "/artworks/collection/art_67.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#641414",
-      "#a01414",
-      "#3c2828",
-      "#281414"
     ],
     "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
     "featured": true
@@ -724,28 +724,6 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
-    "id": "canvas-63",
-    "title": "Pink Lily Bloom",
-    "category": "Landscapes & Illustrative",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Vibrant acrylic floral painting of a blooming pink lily with green leaves on a bright marigold yellow background.",
-    "image": "/artworks/collection/art_63.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#b4a028",
-      "#a08c14",
-      "#281414",
-      "#c8b43c"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
     "id": "canvas-40",
     "title": "Pixel Art F1 Race Car",
     "category": "Pop Culture",
@@ -834,94 +812,6 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
-    "id": "canvas-94",
-    "title": "Ryomen Sukuna (Jujutsu Kaisen)",
-    "category": "Pop Culture",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Bold acrylic anime portrait of Sukuna from Jujutsu Kaisen with spiky pink hair and black facial markings on a dark teal background.",
-    "image": "/artworks/collection/art_94.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#143c50",
-      "#285064",
-      "#3c2828",
-      "#001428"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
-    "id": "canvas-61",
-    "title": "Shin-chan",
-    "category": "Pop Culture",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Hand-painted acrylic illustration of Shin-chan waving his hand against a bright cyan blue background.",
-    "image": "/artworks/collection/art_61.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#14b4dc",
-      "#142814",
-      "#283c28",
-      "#b42828"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
-    "id": "canvas-95",
-    "title": "Shoyo Hinata (Haikyuu!!)",
-    "category": "Pop Culture",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Vibrant mini square canvas portrait of Shoyo Hinata from Haikyuu!! smiling cheerfully against a rich dark green background.",
-    "image": "/artworks/collection/art_95.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#143c14",
-      "#503c3c",
-      "#3c2828",
-      "#b42814"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
-    "id": "canvas-84",
-    "title": "Single Red Rose",
-    "category": "Landscapes & Illustrative",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Elegant square mini canvas featuring a single detailed red rose with crisp black outlines on a terracotta red background.",
-    "image": "/artworks/collection/art_84.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#782828",
-      "#8c3c3c",
-      "#b4b4b4",
-      "#a0a0a0"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
     "id": "canvas-58",
     "title": "Spider-Gwen (Ghost-Spider)",
     "category": "Pop Culture",
@@ -961,28 +851,6 @@ export const ARTWORKS: Artwork[] = [
       "#3c6414",
       "#283c14",
       "#142800"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
-    "id": "canvas-04",
-    "title": "Spider-Man Diamond Portrait",
-    "category": "Pop Culture",
-    "canvasShape": "diamond",
-    "sizeDimensions": "4 x 4 inch Diamond Board",
-    "medium": "Color pencils artwork on Sketchbook Paper",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "A classic Spider-Man bust portrait framed within a bold diamond outline on a sketchbook page.",
-    "image": "/artworks/collection/art_04.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#c8c8b4",
-      "#b4b4a0",
-      "#dc143c",
-      "#c80028"
     ],
     "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
     "featured": false
@@ -1318,6 +1186,28 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
+    "id": "canvas-25",
+    "title": "STAR Graphic Star Canvas",
+    "category": "Typography",
+    "canvasShape": "star",
+    "sizeDimensions": "4.5 inch Cardboard Painting",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 200,
+    "inStock": true,
+    "description": "A star-shaped cut canvas painted yellow with red borders containing bold 'STAR' typography.",
+    "image": "/artworks/collection/art_25.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#500014",
+      "#a0a08c",
+      "#b4b414",
+      "#b4b4a0"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
     "id": "kawaii-avocado",
     "title": "Kawaii Mini Avocado",
     "category": "Landscapes & Illustrative",
@@ -1337,6 +1227,94 @@ export const ARTWORKS: Artwork[] = [
       "#b4143c"
     ],
     "story": "One of the favorite mini pieces that brings an instant smile to everyone who sees it!",
+    "featured": false
+  },
+  {
+    "id": "canvas-67",
+    "title": "Batman & Hello Kitty Duo",
+    "category": "Pop Culture",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "5 x 8 inch Mini Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 300,
+    "inStock": true,
+    "description": "Charming pop culture acrylic artwork depicting chibi Batman and Hello Kitty side by side on a bold red background.",
+    "image": "/artworks/collection/art_67.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#641414",
+      "#a01414",
+      "#3c2828",
+      "#281414"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": true
+  },
+  {
+    "id": "canvas-63",
+    "title": "Pink Lily Bloom",
+    "category": "Landscapes & Illustrative",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "5 x 8 inch Mini Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 300,
+    "inStock": true,
+    "description": "Vibrant acrylic floral painting of a blooming pink lily with green leaves on a bright marigold yellow background.",
+    "image": "/artworks/collection/art_63.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#b4a028",
+      "#a08c14",
+      "#281414",
+      "#c8b43c"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
+    "id": "canvas-61",
+    "title": "Shin-chan",
+    "category": "Pop Culture",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "5 x 8 inch Mini Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 300,
+    "inStock": true,
+    "description": "Hand-painted acrylic illustration of Shin-chan waving his hand against a bright cyan blue background.",
+    "image": "/artworks/collection/art_61.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#14b4dc",
+      "#142814",
+      "#283c28",
+      "#b42828"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
+    "id": "canvas-04",
+    "title": "Spider-Man Diamond Portrait",
+    "category": "Pop Culture",
+    "canvasShape": "diamond",
+    "sizeDimensions": "4 x 4 inch Diamond Board",
+    "medium": "Color pencils artwork on Sketchbook Paper",
+    "year": "2026",
+    "price": 300,
+    "inStock": true,
+    "description": "A classic Spider-Man bust portrait framed within a bold diamond outline on a sketchbook page.",
+    "image": "/artworks/collection/art_04.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#c8c8b4",
+      "#b4b4a0",
+      "#dc143c",
+      "#c80028"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
     "featured": false
   },
   {
@@ -1406,28 +1384,6 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
-    "id": "canvas-87",
-    "title": "Shin-chan Flexing",
-    "category": "Pop Culture",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 300,
-    "inStock": true,
-    "description": "Hand-painted square mini canvas showing Shin-chan flexing his arm in his signature pajamas on a bold red background.",
-    "image": "/artworks/collection/art_87.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#b41428",
-      "#b4b4b4",
-      "#c8a064",
-      "#a0a0a0"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
     "id": "canvas-01",
     "title": "Sunset Cloudscape & Tree Silhouettes",
     "category": "Landscapes & Illustrative",
@@ -1472,28 +1428,6 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
-    "id": "canvas-25",
-    "title": "STAR Graphic Star Canvas",
-    "category": "Typography",
-    "canvasShape": "star",
-    "sizeDimensions": "4.5 inch Cardboard Painting",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 350,
-    "inStock": true,
-    "description": "A star-shaped cut canvas painted yellow with red borders containing bold 'STAR' typography.",
-    "image": "/artworks/collection/art_25.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#500014",
-      "#a0a08c",
-      "#b4b414",
-      "#b4b4a0"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
     "id": "red-floral-study",
     "title": "Vibrant Red Florals",
     "category": "Landscapes & Illustrative",
@@ -1533,6 +1467,28 @@ export const ARTWORKS: Artwork[] = [
       "#283c14",
       "#000000",
       "#506414"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
+    "id": "canvas-84",
+    "title": "Single Red Rose",
+    "category": "Landscapes & Illustrative",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "5 x 8 inch Mini Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 400,
+    "inStock": true,
+    "description": "Elegant square mini canvas featuring a single detailed red rose with crisp black outlines on a terracotta red background.",
+    "image": "/artworks/collection/art_84.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#782828",
+      "#8c3c3c",
+      "#b4b4b4",
+      "#a0a0a0"
     ],
     "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
     "featured": false
@@ -1692,6 +1648,28 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
+    "id": "canvas-87",
+    "title": "Shin-chan Flexing",
+    "category": "Pop Culture",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "5 x 8 inch Mini Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 500,
+    "inStock": true,
+    "description": "Hand-painted square mini canvas showing Shin-chan flexing his arm in his signature pajamas on a bold red background.",
+    "image": "/artworks/collection/art_87.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#b41428",
+      "#b4b4b4",
+      "#c8a064",
+      "#a0a0a0"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
     "id": "canvas-15",
     "title": "Textured Letter 'G' with Hearts",
     "category": "Typography",
@@ -1755,28 +1733,6 @@ export const ARTWORKS: Artwork[] = [
       "#8c8c3c"
     ],
     "story": "Turning Hawkins monster lore into a handcrafted round desk display.",
-    "featured": false
-  },
-  {
-    "id": "canvas-17",
-    "title": "Red Hearts on Vintage Book Page",
-    "category": "Typography",
-    "canvasShape": "heart",
-    "sizeDimensions": "6 x 8 inch Heart Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 600,
-    "inStock": true,
-    "description": "A vintage torn book page adorned with layered red paper heart cutouts creating a romantic collage.",
-    "image": "/artworks/collection/art_17.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#500000",
-      "#786450",
-      "#8c7864",
-      "#64503c"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
     "featured": false
   },
   {
@@ -1885,6 +1841,28 @@ export const ARTWORKS: Artwork[] = [
       "#b4b4a0",
       "#a00000",
       "#b4003c"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
+    "id": "canvas-95",
+    "title": "Shoyo Hinata (Haikyuu!!)",
+    "category": "Pop Culture",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "5 x 8 inch Mini Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 800,
+    "inStock": true,
+    "description": "Vibrant mini square canvas portrait of Shoyo Hinata from Haikyuu!! smiling cheerfully against a rich dark green background.",
+    "image": "/artworks/collection/art_95.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#143c14",
+      "#503c3c",
+      "#3c2828",
+      "#b42814"
     ],
     "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
     "featured": false
@@ -2063,6 +2041,28 @@ export const ARTWORKS: Artwork[] = [
       "#a0a08c"
     ],
     "story": "A daily reminder painted to slow down and appreciate oneself.",
+    "featured": false
+  },
+  {
+    "id": "canvas-94",
+    "title": "Ryomen Sukuna (Jujutsu Kaisen)",
+    "category": "Pop Culture",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "5 x 8 inch Mini Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 1400,
+    "inStock": true,
+    "description": "Bold acrylic anime portrait of Sukuna from Jujutsu Kaisen with spiky pink hair and black facial markings on a dark teal background.",
+    "image": "/artworks/collection/art_94.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#143c50",
+      "#285064",
+      "#3c2828",
+      "#001428"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
     "featured": false
   },
   {
