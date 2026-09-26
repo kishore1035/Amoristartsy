@@ -5,6 +5,7 @@ import Navbar from "@/components/ui/Navbar";
 import MinimalHero from "@/components/hero/MinimalHero";
 import MinimalGallery from "@/components/gallery/MinimalGallery";
 import ArtworkModal from "@/components/gallery/ArtworkModal";
+import CustomOrderSection from "@/components/order/CustomOrderSection";
 import MinimalStory from "@/components/story/MinimalStory";
 import Footer from "@/components/ui/Footer";
 import { Artwork } from "@/data/artworks";
@@ -22,6 +23,9 @@ export default function Home() {
 
       {/* Minimal Gallery */}
       <MinimalGallery onSelectArtwork={(art) => setSelectedArtwork(art)} />
+
+      {/* Custom Commission / Order Section */}
+      <CustomOrderSection />
 
       {/* Guna's Bio Story Section */}
       <MinimalStory />

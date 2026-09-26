@@ -36,14 +36,23 @@ export default function Footer() {
             Handcrafted acrylic artworks painted with hope, warm pastel colors, and love. Each piece is unique and ready to bring a smile to your space.
           </p>
 
-          <Link
-            href="/order"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-white font-semibold text-xs sm:text-sm hover:bg-amber-600 transition-all shadow-warm-amber active:scale-95"
-          >
-            <ShoppingBag className="w-4 h-4 text-white" />
-            <span>Order Paintings</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/order"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-amber-500 text-white font-semibold text-xs sm:text-sm hover:bg-amber-600 transition-all shadow-warm-amber active:scale-95"
+            >
+              <ShoppingBag className="w-4 h-4 text-white" />
+              <span>Studio Catalog</span>
+            </Link>
+
+            <Link
+              href="/order?mode=custom"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white border border-amber-900/15 text-ink-main font-semibold text-xs sm:text-sm hover:border-amber-500 hover:text-amber-700 transition-all shadow-sm active:scale-95"
+            >
+              <Sparkles className="w-4 h-4 text-amber-600" />
+              <span>Customize Order ✨</span>
+            </Link>
+          </div>
         </div>
 
         {/* Right Column */}

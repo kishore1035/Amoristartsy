@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SoundController from "./SoundController";
-import { Layers, Compass, ShoppingBag, Menu, X } from "lucide-react";
+import { Layers, Compass, ShoppingBag, Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
@@ -64,6 +64,14 @@ export default function Navbar() {
           </Link>
 
           <Link
+            href="/#custom"
+            className="hover:text-amber-700 transition-colors flex items-center gap-1.5"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+            <span>Custom Orders ✨</span>
+          </Link>
+
+          <Link
             href="/#story"
             className="hover:text-amber-700 transition-colors flex items-center gap-1.5"
           >
@@ -113,6 +121,15 @@ export default function Navbar() {
               >
                 <Layers className="w-4 h-4 text-amber-600" />
                 <span>Artworks Gallery</span>
+              </Link>
+
+              <Link
+                href="/#custom"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2.5 text-ink-main hover:text-amber-700 py-2 border-b border-amber-900/10"
+              >
+                <Sparkles className="w-4 h-4 text-amber-600" />
+                <span>Custom Orders ✨</span>
               </Link>
 
               <Link

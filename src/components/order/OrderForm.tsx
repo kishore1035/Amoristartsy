@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { ARTWORKS, Artwork } from "@/data/artworks";
 import ArtworkModal from "@/components/gallery/ArtworkModal";
-import { ShoppingBag, Plus, Minus, Check, MapPin, Send, Search, Eye, ArrowDown, MessageCircle } from "lucide-react";
+import { ShoppingBag, Plus, Minus, Check, MapPin, Send, Search, Eye, ArrowDown, MessageCircle, Sparkles } from "lucide-react";
 
 const CATEGORIES = ["All", "Pop Culture", "Traditional", "Typography", "Landscapes & Illustrative"] as const;
 const INITIAL_VISIBLE_COUNT = 12;
@@ -14,7 +14,11 @@ interface OrderQuantities {
   [key: string]: number;
 }
 
-export default function OrderForm() {
+interface OrderFormProps {
+  onSwitchToCustom?: () => void;
+}
+
+export default function OrderForm({ onSwitchToCustom }: OrderFormProps = {}) {
   const searchParams = useSearchParams();
   const preselectedItem = searchParams?.get("item");
 
@@ -148,6 +152,24 @@ export default function OrderForm() {
               {selectedItems.length} Selected ({totalItemCount} Items)
             </span>
           </div>
+
+          {/* Custom Commission Prompt Banner */}
+          {onSwitchToCustom && (
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs font-sans">
+              <div className="flex items-center gap-2 text-ink-main">
+                <Sparkles className="w-4 h-4 text-amber-600 shrink-0" />
+                <span>Want a specific anime character, pet portrait, or custom size?</span>
+              </div>
+              <button
+                type="button"
+                onClick={onSwitchToCustom}
+                className="inline-flex items-center gap-1 font-semibold text-amber-800 hover:text-amber-950 underline self-start sm:self-auto cursor-pointer"
+              >
+                <span>Customize an Artwork ✨</span>
+                <span>&rarr;</span>
+              </button>
+            </div>
+          )}
 
           {/* Search Bar for Buying Page */}
           <div className="relative">
