@@ -218,14 +218,14 @@ export default function CustomOrderSection() {
                     onClick={() => setSelectedTheme(t.id)}
                     className={`p-3.5 rounded-xl text-left transition-all border ${
                       isSelected
-                        ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
-                        : "bg-white/80 border-amber-900/15 text-ink-main hover:border-amber-400 hover:bg-white"
+                        ? "bg-amber-500/10 border-amber-500 shadow-md ring-2 ring-amber-500/30"
+                        : "bg-white/80 border-amber-900/15 hover:border-amber-400 hover:bg-white"
                     }`}
                   >
-                    <div className="font-sans font-semibold text-xs sm:text-sm mb-0.5">
+                    <div className="font-sans font-semibold text-xs sm:text-sm mb-0.5 text-ink-main">
                       {t.label}
                     </div>
-                    <div className={`text-[11px] leading-tight ${isSelected ? "text-emerald-100" : "text-ink-muted"}`}>
+                    <div className="text-[11px] leading-tight text-ink-muted">
                       {t.hint}
                     </div>
                   </button>
