@@ -20,6 +20,72 @@ export interface Artwork {
 
 export const ARTWORKS: Artwork[] = [
   {
+    "id": "spiderman-canvas",
+    "title": "Spider-Man",
+    "category": "Pop Culture",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "8 x 10 inch Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 1800,
+    "inStock": true,
+    "description": "Bold hand-painted acrylic portrait of Spider-Man against his iconic black spider emblem with web detailing and vibrant golden-yellow background.",
+    "image": "/artworks/spiderman_canvas.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#f7da1e",
+      "#dc2626",
+      "#1d78f2",
+      "#18181b"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on an 8x10 inch woven canvas.",
+    "featured": true
+  },
+  {
+    "id": "batman-hello-kitty",
+    "title": "Batman & Hello Kitty",
+    "category": "Pop Culture",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "A5 (300 GSM Paper)",
+    "medium": "Hand-Painted Acrylic on 300 GSM Paper",
+    "year": "2026",
+    "price": 300,
+    "inStock": true,
+    "description": "Charming chibi crossover featuring Batman in costume alongside Hello Kitty in blue overalls on a soft pink background, painted on 300 GSM heavyweight paper.",
+    "image": "/artworks/batman_hello_kitty.jpg",
+    "depthMap": "/artworks/crystal_forest_depth.svg",
+    "colorPalette": [
+      "#f4a6b8",
+      "#1e40af",
+      "#dc2626",
+      "#1c1917"
+    ],
+    "story": "Handcrafted with care by Guna on 300 GSM artist paper, bringing together Gotham and Sanrio.",
+    "featured": true
+  },
+  {
+    "id": "ladybug-wood-slice",
+    "title": "Ladybug",
+    "category": "Landscapes & Illustrative",
+    "canvasShape": "circle",
+    "sizeDimensions": "3.5 inch Wood Slice",
+    "medium": "Hand-Painted Acrylic on Natural Wood Slice",
+    "year": "2026",
+    "price": 400,
+    "inStock": true,
+    "description": "Vibrant hand-painted ladybug with open wings and bold black spots against a luminous lime-green background on a 3.5 inch natural wood slice with rustic bark rim.",
+    "image": "/artworks/ladybug_wood_slice.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#22c55e",
+      "#e11d48",
+      "#171717",
+      "#78350f"
+    ],
+    "story": "Handcrafted with care by Guna on a 3.5 inch rustic bark-rimmed natural wood slice.",
+    "featured": true
+  },
+  {
     "id": "luffy-one-piece",
     "title": "Monkey D. Luffy",
     "category": "Pop Culture",

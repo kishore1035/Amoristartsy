@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { ARTWORKS, Artwork } from "@/data/artworks";
 import ArtworkModal from "@/components/gallery/ArtworkModal";
-import { ShoppingBag, Plus, Minus, Check, MapPin, Send, Search, Eye, ArrowDown, Instagram, MessageCircle } from "lucide-react";
+import { ShoppingBag, Plus, Minus, Check, MapPin, Send, Search, Eye, ArrowDown, MessageCircle } from "lucide-react";
 
 const CATEGORIES = ["All", "Pop Culture", "Traditional", "Typography", "Landscapes & Illustrative"] as const;
 const INITIAL_VISIBLE_COUNT = 12;
@@ -38,7 +38,7 @@ export default function OrderForm() {
   const [city, setCity] = useState("");
   const [notes, setNotes] = useState("");
 
-  const [orderSent, setOrderSent] = useState<"whatsapp" | "instagram" | null>(null);
+  const [orderSent, setOrderSent] = useState<boolean>(false);
 
   // Pre-select item from URL query param if present
   useEffect(() => {
@@ -94,7 +94,7 @@ export default function OrderForm() {
     0
   );
 
-  // Generate WhatsApp Order via Universal Share (Zero phone numbers exposed)
+  // Generate WhatsApp Order via Direct Number (+918904865499)
   const handleWhatsAppOrder = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (selectedItems.length === 0) return;
@@ -115,7 +115,7 @@ export default function OrderForm() {
     }
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/918904865499?text=${encodedMessage}`;
 
     const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
@@ -123,36 +123,7 @@ export default function OrderForm() {
     } else {
       window.open(whatsappUrl, "_blank");
     }
-    setOrderSent("whatsapp");
-  };
-
-  // Generate Instagram Order Message & Redirect (1-Click with username @amoristartsy)
-  const handleInstagramOrder = (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-    if (selectedItems.length === 0) return;
-
-    let itemsSummary = selectedItems
-      .map(
-        (item) =>
-          `- ${item.title} (${item.canvasShape} canvas, x${quantities[item.id]}) — ₹${
-            item.price * quantities[item.id]
-          }`
-      )
-      .join("\n");
-
-    const message = `Hi Guna! I'd like to order from your studio:\n\n${itemsSummary}\n\n*Total Amount:* ₹${grandTotal}\n\n*Delivery Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}, ${city} - ${pincode}\n${notes ? `Notes: ${notes}\n` : ""}\nThank you!`;
-
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(message).catch(() => {});
-    }
-
-    const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.location.href = "https://ig.me/m/amoristartsy";
-    } else {
-      window.open("https://ig.me/m/amoristartsy", "_blank");
-    }
-    setOrderSent("instagram");
+    setOrderSent(true);
   };
 
   const scrollToCheckout = () => {
@@ -373,7 +344,7 @@ export default function OrderForm() {
             )}
 
             {/* Delivery Form */}
-            <form onSubmit={handleInstagramOrder} className="space-y-4">
+            <form onSubmit={handleWhatsAppOrder} className="space-y-4">
               <div>
                 <label className="block text-xs font-sans font-medium text-amber-950/80 mb-1.5">
                   Your Full Name *
@@ -459,80 +430,50 @@ export default function OrderForm() {
                 />
               </div>
 
-              {/* Submit Buttons */}
-              <div className="space-y-2.5 pt-2">
+              {/* Submit Button */}
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={selectedItems.length === 0}
                   className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2.5 ${
                     selectedItems.length > 0
-                      ? "bg-gradient-to-r from-amber-600 via-rose-500 to-purple-600 hover:opacity-95 text-white font-semibold shadow-md active:scale-95"
+                      ? "bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-md active:scale-95 cursor-pointer"
                       : "bg-gray-200 text-ink-muted cursor-not-allowed border border-gray-300"
                   }`}
                 >
-                  <Instagram className="w-4 h-4 text-white" />
+                  <MessageCircle className="w-4 h-4 text-white" />
                   <span>
                     {selectedItems.length > 0
-                      ? `Place Order via Instagram DM (@amoristartsy)`
+                      ? `Place Order via WhatsApp (+91 89048 65499)`
                       : "Select Artworks to Order"}
                   </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleWhatsAppOrder}
-                  disabled={selectedItems.length === 0}
-                  className={`w-full py-3 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
-                    selectedItems.length > 0
-                      ? "bg-emerald-50 border border-emerald-300 text-emerald-800 hover:bg-emerald-100 active:scale-95 shadow-xs"
-                      : "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
-                  }`}
-                >
-                  <MessageCircle className="w-4 h-4 text-emerald-600" />
-                  <span>Or Share Order via WhatsApp</span>
                 </button>
               </div>
             </form>
 
-            {orderSent === "whatsapp" && (
+            {orderSent && (
               <div className="mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-950 text-xs font-sans space-y-1.5">
                 <div className="flex items-center gap-2 font-semibold text-emerald-900">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Order details copied & WhatsApp opened!</span>
+                  <span>Order opened in WhatsApp (+91 89048 65499)!</span>
                 </div>
                 <p className="text-emerald-900/85 text-xs leading-relaxed">
-                  Your full order summary is copied to your clipboard. Pick Guna or search in WhatsApp to send your order!
+                  Your full order summary is loaded directly in WhatsApp with Guna and copied to your clipboard.
                 </p>
-              </div>
-            )}
-
-            {orderSent === "instagram" && (
-              <div className="mt-4 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-950 text-xs font-sans space-y-2">
-                <div className="flex items-center gap-2 font-semibold text-rose-900">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Order copied to clipboard!</span>
-                </div>
-                <p className="text-ink-muted text-xs leading-relaxed">
-                  Instagram DM has been opened with <strong>@amoristartsy</strong>. Simply paste your order summary in the chat to confirm your pieces!
-                </p>
-                <a
-                  href="https://ig.me/m/amoristartsy"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-rose-900/15 text-xs text-rose-900 hover:text-rose-600 font-medium transition-colors"
-                >
-                  <Instagram className="w-3.5 h-3.5 text-rose-500" />
-                  <span>Open @amoristartsy on Instagram</span>
-                </a>
               </div>
             )}
 
             <div className="mt-6 pt-4 border-t border-amber-900/10 text-xs font-sans text-ink-muted text-center flex flex-wrap items-center justify-center gap-2">
               <span>Handmade with love by Guna</span>
               <span>&bull;</span>
-              <a href="https://ig.me/m/amoristartsy" target="_blank" rel="noreferrer" className="text-rose-700 hover:underline font-semibold">Instagram: @amoristartsy</a>
-              <span>&bull;</span>
-              <span className="text-emerald-800 font-medium">WhatsApp: @gunashree.r</span>
+              <a
+                href="https://wa.me/918904865499"
+                target="_blank"
+                rel="noreferrer"
+                className="text-emerald-800 hover:underline font-semibold"
+              >
+                WhatsApp: +91 89048 65499
+              </a>
             </div>
           </div>
         </div>

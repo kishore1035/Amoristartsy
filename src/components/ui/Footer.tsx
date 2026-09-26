@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ARTWORKS } from "@/data/artworks";
-import { Instagram, ArrowUpRight, Heart, Sparkles, ShoppingBag, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Heart, Sparkles, ShoppingBag, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   const featuredArtworks = ARTWORKS.slice(0, 10);
@@ -73,19 +73,14 @@ export default function Footer() {
             </h4>
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href="https://ig.me/m/amoristartsy"
+                href="https://wa.me/918904865499"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-rose-500 to-purple-600 text-white font-semibold text-xs font-sans hover:opacity-95 transition-all shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold text-xs font-sans hover:bg-emerald-700 transition-all shadow-sm active:scale-95"
               >
-                <Instagram className="w-4 h-4 text-white" />
-                <span>Instagram DM: @amoristartsy</span>
+                <MessageCircle className="w-4 h-4 text-white" />
+                <span>WhatsApp Order: +91 89048 65499</span>
               </a>
-
-              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600/10 border border-emerald-600/25 text-emerald-900 font-semibold text-xs font-sans">
-                <MessageCircle className="w-4 h-4 text-emerald-600" />
-                <span>WhatsApp: @gunashree.r</span>
-              </div>
             </div>
           </div>
         </div>

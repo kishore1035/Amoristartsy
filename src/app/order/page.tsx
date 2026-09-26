@@ -37,7 +37,7 @@ export default function OrderPage() {
           </h1>
 
           <p className="text-base text-ink-muted font-sans leading-relaxed">
-            Select your favorite hand-painted physical artworks from Guna&apos;s gallery collection. All pieces are available for purchase directly from Guna with direct Instagram DM confirmation.
+            Select your favorite hand-painted physical artworks from Guna&apos;s gallery collection. All pieces are available for purchase directly from Guna with instant WhatsApp confirmation (+91 89048 65499).
           </p>
         </div>
 
