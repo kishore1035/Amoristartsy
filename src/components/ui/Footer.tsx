@@ -79,7 +79,7 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white font-semibold text-xs font-sans hover:bg-emerald-700 transition-all shadow-sm active:scale-95"
               >
                 <MessageCircle className="w-4 h-4 text-white" />
-                <span>WhatsApp Order: +91 89048 65499</span>
+                <span>Place Order via WhatsApp</span>
               </a>
             </div>
           </div>

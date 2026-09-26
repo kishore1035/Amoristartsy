@@ -444,7 +444,7 @@ export default function OrderForm() {
                   <MessageCircle className="w-4 h-4 text-white" />
                   <span>
                     {selectedItems.length > 0
-                      ? `Place Order via WhatsApp (+91 89048 65499)`
+                      ? `Place Order via WhatsApp`
                       : "Select Artworks to Order"}
                   </span>
                 </button>
@@ -455,7 +455,7 @@ export default function OrderForm() {
               <div className="mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-950 text-xs font-sans space-y-1.5">
                 <div className="flex items-center gap-2 font-semibold text-emerald-900">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Order opened in WhatsApp (+91 89048 65499)!</span>
+                  <span>Order opened in WhatsApp!</span>
                 </div>
                 <p className="text-emerald-900/85 text-xs leading-relaxed">
                   Your full order summary is loaded directly in WhatsApp with Guna and copied to your clipboard.
@@ -472,7 +472,7 @@ export default function OrderForm() {
                 rel="noreferrer"
                 className="text-emerald-800 hover:underline font-semibold"
               >
-                WhatsApp: +91 89048 65499
+                Order via WhatsApp
               </a>
             </div>
           </div>
