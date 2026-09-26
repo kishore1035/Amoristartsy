@@ -1208,28 +1208,6 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
-    "id": "canvas-14",
-    "title": "Twilight Palm Sunset",
-    "category": "Landscapes & Illustrative",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "A retro purple and pink sunset scene with palm tree silhouettes and street lamps painted on a mini square canvas.",
-    "image": "/artworks/collection/art_14.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#8c8c78",
-      "#a0a08c",
-      "#3c2828",
-      "#787864"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
     "id": "canvas-54",
     "title": "Twin Koi Fish Pond",
     "category": "Landscapes & Illustrative",

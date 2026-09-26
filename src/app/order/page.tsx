@@ -8,6 +8,7 @@ import CustomOrderSection from "@/components/order/CustomOrderSection";
 import { ArrowLeft, Heart, Sparkles, Layers, Palette } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { ARTWORKS } from "@/data/artworks";
 
 function OrderPageContent() {
   const searchParams = useSearchParams();
@@ -71,7 +72,7 @@ function OrderPageContent() {
           }`}
         >
           <Layers className="w-4 h-4" />
-          <span>Studio Catalog (96)</span>
+          <span>Studio Catalog ({ARTWORKS.length})</span>
         </button>
 
         <button
