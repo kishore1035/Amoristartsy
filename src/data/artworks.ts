@@ -21,7 +21,7 @@ export interface Artwork {
 export const ARTWORKS: Artwork[] = [
   {
     "id": "spiderman-canvas",
-    "title": "Spider-Man",
+    "title": "Spider-Man Classic",
     "category": "Pop Culture",
     "canvasShape": "rectangle",
     "sizeDimensions": "8 x 10 inch Canvas",
@@ -43,7 +43,7 @@ export const ARTWORKS: Artwork[] = [
   },
   {
     "id": "batman-hello-kitty",
-    "title": "Batman & Hello Kitty",
+    "title": "Gotham Meets Kawaii (Batman & Hello Kitty)",
     "category": "Pop Culture",
     "canvasShape": "rectangle",
     "sizeDimensions": "A5 (300 GSM Paper)",
@@ -65,7 +65,7 @@ export const ARTWORKS: Artwork[] = [
   },
   {
     "id": "ladybug-wood-slice",
-    "title": "Ladybug",
+    "title": "Woodland Bloom: Scarlet Ladybug",
     "category": "Landscapes & Illustrative",
     "canvasShape": "circle",
     "sizeDimensions": "3.5 inch Wood Slice",
