@@ -165,7 +165,7 @@ export default function OrderForm({ onSwitchToCustom }: OrderFormProps = {}) {
                 onClick={onSwitchToCustom}
                 className="inline-flex items-center gap-1 font-semibold text-amber-800 hover:text-amber-950 underline self-start sm:self-auto cursor-pointer"
               >
-                <span>Customize an Artwork ✨</span>
+                <span>Customize an Artwork</span>
                 <span>&rarr;</span>
               </button>
             </div>

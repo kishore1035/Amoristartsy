@@ -84,7 +84,7 @@ function OrderPageContent() {
           }`}
         >
           <Sparkles className="w-4 h-4" />
-          <span>Customize Order ✨</span>
+          <span>Customize Order</span>
         </button>
       </div>
 

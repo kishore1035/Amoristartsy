@@ -50,7 +50,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white border border-amber-900/15 text-ink-main font-semibold text-xs sm:text-sm hover:border-amber-500 hover:text-amber-700 transition-all shadow-sm active:scale-95"
             >
               <Sparkles className="w-4 h-4 text-amber-600" />
-              <span>Customize Order ✨</span>
+              <span>Customize Order</span>
             </Link>
           </div>
         </div>

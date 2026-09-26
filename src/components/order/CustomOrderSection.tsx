@@ -90,14 +90,14 @@ export default function CustomOrderSection() {
     e.preventDefault();
 
     const message = `Hi Guna! I'd like to commission a *Custom Painting* from your studio:\n\n` +
-      `✨ *Custom Order Details:*\n` +
+      `*Custom Order Details:*\n` +
       `• Medium/Surface: ${currentMedium?.name || "Custom"} (from ${currentMedium?.startingPrice})\n` +
       `• Preferred Size: ${customSize || currentMedium?.popularSize || "Artist Recommendation"}\n` +
       `• Theme/Category: ${currentTheme?.label || "Custom Idea"}\n` +
       `• Character / Painting Vision:\n  "${characterOrIdea}"\n\n` +
       (occasion ? `• Occasion / Target Date: ${occasion}\n` : "") +
       `• Reference Photo: I will send reference images directly in this WhatsApp chat!\n\n` +
-      `📍 *Contact & Delivery:*\n` +
+      `*Contact & Delivery:*\n` +
       `• Name: ${name}\n` +
       `• Phone: ${phone}\n` +
       `• City/State: ${city}\n\n` +

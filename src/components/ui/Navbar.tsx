@@ -68,7 +68,7 @@ export default function Navbar() {
             className="hover:text-amber-700 transition-colors flex items-center gap-1.5"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-            <span>Custom Orders ✨</span>
+            <span>Custom Orders</span>
           </Link>
 
           <Link
@@ -129,7 +129,7 @@ export default function Navbar() {
                 className="flex items-center gap-2.5 text-ink-main hover:text-amber-700 py-2 border-b border-amber-900/10"
               >
                 <Sparkles className="w-4 h-4 text-amber-600" />
-                <span>Custom Orders ✨</span>
+                <span>Custom Orders</span>
               </Link>
 
               <Link
