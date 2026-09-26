@@ -680,50 +680,6 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
-    "id": "canvas-55",
-    "title": "Moonlight Dandelions",
-    "category": "Landscapes & Illustrative",
-    "canvasShape": "circle",
-    "sizeDimensions": "4.5 inch Round Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Monochromatic circular canvas painting showing white dandelion seed clusters floating against a dark lunar sky.",
-    "image": "/artworks/collection/art_55.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#141414",
-      "#000000",
-      "#282828",
-      "#c8b4b4"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
-    "id": "canvas-52",
-    "title": "Moonlit Mountain Peaks",
-    "category": "Landscapes & Illustrative",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Silhouetted black mountain peaks under a glowing full moon and starry cobalt blue gradient night sky.",
-    "image": "/artworks/collection/art_52.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#001400",
-      "#142814",
-      "#3c28c8",
-      "#3c5028"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
     "id": "canvas-38",
     "title": "Mushroom Frog",
     "category": "Landscapes & Illustrative",
@@ -1098,28 +1054,6 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
-    "id": "canvas-50",
-    "title": "Starry Night Floral Wood Slice",
-    "category": "Landscapes & Illustrative",
-    "canvasShape": "circle",
-    "sizeDimensions": "4.5 inch Round Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Hand-painted circular wooden slice depicting a crescent moon in a starry night sky above red flower bushes.",
-    "image": "/artworks/collection/art_50.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#141414",
-      "#143c64",
-      "#000000",
-      "#283c14"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
     "id": "canvas-09",
     "title": "Stitch Holding Red Heart",
     "category": "Pop Culture",
@@ -1291,28 +1225,6 @@ export const ARTWORKS: Artwork[] = [
       "#a0a08c",
       "#3c2828",
       "#787864"
-    ],
-    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
-    "featured": false
-  },
-  {
-    "id": "canvas-80",
-    "title": "Twilight Street Lamps",
-    "category": "Landscapes & Illustrative",
-    "canvasShape": "rectangle",
-    "sizeDimensions": "5 x 8 inch Mini Canvas",
-    "medium": "Hand-Painted Acrylic on Canvas",
-    "year": "2026",
-    "price": 200,
-    "inStock": true,
-    "description": "Serene twilight scenery painting showing glowing streetlamps and tree silhouettes under a soft pastel lavender and pink sky.",
-    "image": "/artworks/collection/art_80.jpg",
-    "depthMap": "/artworks/cyber_samurai_depth.svg",
-    "colorPalette": [
-      "#000014",
-      "#282828",
-      "#b4b4b4",
-      "#a0a0a0"
     ],
     "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
     "featured": false
@@ -1648,6 +1560,28 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
+    "id": "canvas-80",
+    "title": "Twilight Street Lamps",
+    "category": "Landscapes & Illustrative",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "5 x 8 inch Mini Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 400,
+    "inStock": true,
+    "description": "Serene twilight scenery painting showing glowing streetlamps and tree silhouettes under a soft pastel lavender and pink sky.",
+    "image": "/artworks/collection/art_80.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#000014",
+      "#282828",
+      "#b4b4b4",
+      "#a0a0a0"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
     "id": "canvas-79",
     "title": "Anatomical Heart on Pastel Camo",
     "category": "Landscapes & Illustrative",
@@ -1802,6 +1736,28 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
+    "id": "canvas-50",
+    "title": "Starry Night Floral Wood Slice",
+    "category": "Landscapes & Illustrative",
+    "canvasShape": "circle",
+    "sizeDimensions": "4.5 inch Round Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 600,
+    "inStock": true,
+    "description": "Hand-painted circular wooden slice depicting a crescent moon in a starry night sky above red flower bushes.",
+    "image": "/artworks/collection/art_50.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#141414",
+      "#143c64",
+      "#000000",
+      "#283c14"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
     "id": "demogorgon-round",
     "title": "Demogorgon Bloom",
     "category": "Pop Culture",
@@ -1890,6 +1846,28 @@ export const ARTWORKS: Artwork[] = [
     "featured": false
   },
   {
+    "id": "canvas-52",
+    "title": "Moonlit Mountain Peaks",
+    "category": "Landscapes & Illustrative",
+    "canvasShape": "rectangle",
+    "sizeDimensions": "5 x 8 inch Mini Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 700,
+    "inStock": true,
+    "description": "Silhouetted black mountain peaks under a glowing full moon and starry cobalt blue gradient night sky.",
+    "image": "/artworks/collection/art_52.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#001400",
+      "#142814",
+      "#3c28c8",
+      "#3c5028"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
     "id": "canvas-69",
     "title": "Moonlit Mountain Landscape",
     "category": "Landscapes & Illustrative",
@@ -1929,6 +1907,28 @@ export const ARTWORKS: Artwork[] = [
       "#b4b4a0",
       "#a00000",
       "#b4003c"
+    ],
+    "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
+    "featured": false
+  },
+  {
+    "id": "canvas-55",
+    "title": "Moonlight Dandelions",
+    "category": "Landscapes & Illustrative",
+    "canvasShape": "circle",
+    "sizeDimensions": "4.5 inch Round Canvas",
+    "medium": "Hand-Painted Acrylic on Canvas",
+    "year": "2026",
+    "price": 800,
+    "inStock": true,
+    "description": "Monochromatic circular canvas painting showing white dandelion seed clusters floating against a dark lunar sky.",
+    "image": "/artworks/collection/art_55.jpg",
+    "depthMap": "/artworks/cyber_samurai_depth.svg",
+    "colorPalette": [
+      "#141414",
+      "#000000",
+      "#282828",
+      "#c8b4b4"
     ],
     "story": "Handcrafted with care by Guna using rich acrylic pigments on canvas.",
     "featured": false
