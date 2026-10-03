@@ -6,6 +6,7 @@ import MinimalHero from "@/components/hero/MinimalHero";
 import MinimalGallery from "@/components/gallery/MinimalGallery";
 import ArtworkModal from "@/components/gallery/ArtworkModal";
 import CustomOrderSection from "@/components/order/CustomOrderSection";
+import ReviewsSection from "@/components/reviews/ReviewsSection";
 import MinimalStory from "@/components/story/MinimalStory";
 import Footer from "@/components/ui/Footer";
 import { Artwork } from "@/data/artworks";
@@ -27,8 +28,12 @@ export default function Home() {
       {/* Custom Commission / Order Section */}
       <CustomOrderSection />
 
+      {/* Collector Stories & Reviews Section */}
+      <ReviewsSection />
+
       {/* Guna's Bio Story Section */}
       <MinimalStory />
+
 
       {/* Artwork Inspection Modal */}
       <ArtworkModal

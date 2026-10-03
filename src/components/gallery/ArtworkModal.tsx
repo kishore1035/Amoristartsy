@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Artwork } from "@/data/artworks";
-import { X, Heart, Copy, Check, ShoppingBag, Plus } from "lucide-react";
+import { X, Heart, Copy, Check, ShoppingBag, Plus, Star, MessageSquarePlus } from "lucide-react";
+import WriteReviewModal from "@/components/reviews/WriteReviewModal";
+import { getSavedReviews, Review } from "@/data/reviews";
 
 interface ArtworkModalProps {
   artwork: Artwork | null;
@@ -20,6 +23,15 @@ export default function ArtworkModal({
   isOrdered = false,
 }: ArtworkModalProps) {
   const [copiedHex, setCopiedHex] = useState<string | null>(null);
+  const [isWriteReviewOpen, setIsWriteReviewOpen] = useState(false);
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  useEffect(() => {
+    if (artwork) {
+      setReviews(getSavedReviews());
+    }
+  }, [artwork]);
+
 
   if (!artwork) return null;
 
@@ -139,6 +151,58 @@ export default function ArtworkModal({
                 ))}
               </div>
             </div>
+
+            {/* Collector Reviews & Review Option */}
+            <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-900/10">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center text-amber-500">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                    ))}
+                  </div>
+                  <span className="text-xs font-serif font-bold text-ink-main">
+                    5.0 &bull; Collector Praise
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsWriteReviewOpen(true)}
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-amber-900/20 hover:border-amber-500 text-amber-900 text-xs font-medium font-sans transition-all active:scale-95 shadow-xs"
+                >
+                  <MessageSquarePlus className="w-3.5 h-3.5 text-amber-600" />
+                  <span>Write a Review</span>
+                </button>
+              </div>
+
+              {(() => {
+                const specific = reviews.filter(
+                  (r) => r.artworkId === artwork.id || r.artworkTitle.toLowerCase() === artwork.title.toLowerCase()
+                );
+                const displayRev = specific[0] || reviews[0];
+
+                if (displayRev) {
+                  return (
+                    <div className="mt-2 text-xs font-sans text-ink-muted">
+                      <p className="italic line-clamp-2">
+                        &ldquo;{displayRev.comment}&rdquo;
+                      </p>
+                      <div className="mt-1 flex items-center justify-between text-[11px] text-amber-900/80">
+                        <span>&mdash; {displayRev.author} ({displayRev.location || "Verified Collector"})</span>
+                        <span className="text-emerald-700 font-medium">Verified Order</span>
+                      </div>
+                    </div>
+                  );
+                }
+
+                return (
+                  <p className="text-xs font-sans text-ink-muted mt-1">
+                    Have you collected this artwork? Be the first to share your experience with fellow collectors!
+                  </p>
+                );
+              })()}
+            </div>
           </div>
 
           {/* Sticky Bottom Order Button */}
@@ -178,6 +242,18 @@ export default function ArtworkModal({
           </div>
         </div>
       </div>
+
+      {/* Write a Review Modal for this specific artwork */}
+      <WriteReviewModal
+        isOpen={isWriteReviewOpen}
+        onClose={() => setIsWriteReviewOpen(false)}
+        defaultArtworkId={artwork.id}
+        defaultArtworkTitle={artwork.title}
+        onReviewSubmitted={(newRev) => {
+          setReviews((prev) => [newRev, ...prev]);
+        }}
+      />
     </div>
   );
 }
+

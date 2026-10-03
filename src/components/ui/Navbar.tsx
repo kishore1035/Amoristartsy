@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SoundController from "./SoundController";
-import { Layers, Compass, ShoppingBag, Menu, X, Sparkles } from "lucide-react";
+import { Layers, Compass, ShoppingBag, Menu, X, Sparkles, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
@@ -72,6 +72,14 @@ export default function Navbar() {
           </Link>
 
           <Link
+            href="/#reviews"
+            className="hover:text-amber-700 transition-colors flex items-center gap-1.5"
+          >
+            <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+            <span>Reviews</span>
+          </Link>
+
+          <Link
             href="/#story"
             className="hover:text-amber-700 transition-colors flex items-center gap-1.5"
           >
@@ -79,6 +87,7 @@ export default function Navbar() {
             <span>Bio & Story</span>
           </Link>
         </nav>
+
 
         {/* Right Actions: Sound Synthesizer, Desktop Order Button & Mobile Menu Toggle */}
         <div className="flex items-center gap-2.5 sm:gap-4">
@@ -133,6 +142,15 @@ export default function Navbar() {
               </Link>
 
               <Link
+                href="/#reviews"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2.5 text-ink-main hover:text-amber-700 py-2 border-b border-amber-900/10"
+              >
+                <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                <span>Reviews & Stories</span>
+              </Link>
+
+              <Link
                 href="/#story"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-2.5 text-ink-main hover:text-amber-700 py-2 border-b border-amber-900/10"
@@ -140,6 +158,7 @@ export default function Navbar() {
                 <Compass className="w-4 h-4 text-accent-terracotta" />
                 <span>Bio & Story</span>
               </Link>
+
 
               <Link
                 href="/order"

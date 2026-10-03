@@ -5,7 +5,9 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { ARTWORKS, Artwork } from "@/data/artworks";
 import ArtworkModal from "@/components/gallery/ArtworkModal";
-import { ShoppingBag, Plus, Minus, Check, MapPin, Send, Search, Eye, ArrowDown, MessageCircle, Sparkles } from "lucide-react";
+import WriteReviewModal from "@/components/reviews/WriteReviewModal";
+import { ShoppingBag, Plus, Minus, Check, MapPin, Send, Search, Eye, ArrowDown, MessageCircle, Sparkles, Star } from "lucide-react";
+
 
 const CATEGORIES = ["All", "Pop Culture", "Traditional", "Typography", "Landscapes & Illustrative"] as const;
 const INITIAL_VISIBLE_COUNT = 12;
@@ -43,6 +45,8 @@ export default function OrderForm({ onSwitchToCustom }: OrderFormProps = {}) {
   const [notes, setNotes] = useState("");
 
   const [orderSent, setOrderSent] = useState<boolean>(false);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState<boolean>(false);
+
 
   // Pre-select item from URL query param if present
   useEffect(() => {
@@ -485,7 +489,19 @@ export default function OrderForm({ onSwitchToCustom }: OrderFormProps = {}) {
               </div>
             )}
 
-            <div className="mt-6 pt-4 border-t border-amber-900/10 text-xs font-sans text-ink-muted text-center flex flex-wrap items-center justify-center gap-2">
+            {/* Review Option CTA */}
+            <div className="mt-4 pt-4 border-t border-amber-900/10">
+              <button
+                type="button"
+                onClick={() => setIsReviewModalOpen(true)}
+                className="w-full py-2.5 px-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/25 text-amber-900 font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs active:scale-95"
+              >
+                <Star className="w-3.5 h-3.5 text-amber-600 fill-amber-600" />
+                <span>Already Own an Amoristartsy Canvas? Leave a Review</span>
+              </button>
+            </div>
+
+            <div className="mt-4 pt-3 text-xs font-sans text-ink-muted text-center flex flex-wrap items-center justify-center gap-2">
               <span>Handmade with love by Guna</span>
               <span>&bull;</span>
               <a
@@ -529,6 +545,15 @@ export default function OrderForm({ onSwitchToCustom }: OrderFormProps = {}) {
         onToggleOrder={(art) => handleIncrement(art.id)}
         isOrdered={(quantities[inspectedArtwork?.id || ''] || 0) > 0}
       />
+
+      {/* Write a Review Modal */}
+      <WriteReviewModal
+        isOpen={isReviewModalOpen}
+        onClose={() => setIsReviewModalOpen(false)}
+        defaultArtworkId={selectedItems[0]?.id}
+        defaultArtworkTitle={selectedItems[0]?.title}
+      />
     </>
   );
 }
+
