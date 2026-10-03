@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { ARTWORKS } from "@/data/artworks";
 import { saveNewReview, Review } from "@/data/reviews";
-import { X, Star, Sparkles, Check, Heart, Palette } from "lucide-react";
+import { X, Star, Sparkles, Check, Heart } from "lucide-react";
 import confetti from "canvas-confetti";
 
 interface WriteReviewModalProps {
@@ -29,12 +30,13 @@ export default function WriteReviewModal({
   defaultArtworkTitle,
   onReviewSubmitted,
 }: WriteReviewModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [rating, setRating] = useState<number>(5);
   const [hoverRating, setHoverRating] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [location, setLocation] = useState<string>("");
   const [selectedArtworkTitle, setSelectedArtworkTitle] = useState<string>(
-    defaultArtworkTitle || "Custom Commission"
+    defaultArtworkTitle || "Custom Canvas Commission"
   );
   const [selectedArtworkId, setSelectedArtworkId] = useState<string>(
     defaultArtworkId || ""
@@ -44,6 +46,21 @@ export default function WriteReviewModal({
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [errors, setErrors] = useState<{ name?: string; comment?: string }>({});
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Lock background scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (defaultArtworkTitle) {
@@ -58,7 +75,7 @@ export default function WriteReviewModal({
     }
   }, [defaultArtworkTitle, defaultArtworkId]);
 
-  if (!isOpen) return null;
+  if (!mounted || !isOpen) return null;
 
   const handleArtworkChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const val = e.target.value;
@@ -116,7 +133,7 @@ export default function WriteReviewModal({
           colors: ["#aa7a50", "#c89f78", "#d0e1fd", "#a16040", "#f6ded3"],
         });
       } catch (_) {
-        // Fallback gracefully if confetti fails
+        // Fallback gracefully
       }
 
       setIsSuccess(true);
@@ -141,21 +158,21 @@ export default function WriteReviewModal({
 
   const displayRating = hoverRating !== null ? hoverRating : rating;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-md animate-in fade-in duration-200">
+  return createPortal(
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 bg-black/65 backdrop-blur-sm animate-in fade-in duration-200">
       {/* Click backdrop to close */}
       <div className="absolute inset-0" onClick={onClose} />
 
-      {/* Modal Dialog Card */}
-      <div className="relative z-10 w-full max-w-xl bg-surface border border-amber-900/15 rounded-3xl overflow-hidden shadow-2xl max-h-[92vh] flex flex-col">
-        {/* Header */}
-        <div className="flex items-center justify-between p-5 sm:p-6 border-b border-amber-900/10 bg-white/70">
+      {/* Modal Dialog Card - Perfectly framed with max-h and internal flex scroll */}
+      <div className="relative z-10 w-full max-w-xl max-h-[88vh] sm:max-h-[82vh] bg-surface border border-amber-900/15 rounded-3xl overflow-hidden shadow-2xl flex flex-col my-auto">
+        {/* Sticky Header - Always visible at top */}
+        <div className="shrink-0 flex items-center justify-between px-5 sm:px-6 py-4 border-b border-amber-900/10 bg-white/95 backdrop-blur-md">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-800">
+            <div className="w-9 h-9 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-800 shrink-0">
               <Sparkles className="w-5 h-5 text-amber-700" />
             </div>
             <div>
-              <h3 className="font-serif text-xl sm:text-2xl text-ink-main font-semibold leading-tight">
+              <h3 className="font-serif text-lg sm:text-2xl text-ink-main font-semibold leading-tight">
                 Leave a Review
               </h3>
               <p className="font-sans text-xs text-ink-muted">
@@ -167,7 +184,8 @@ export default function WriteReviewModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white border border-amber-900/15 flex items-center justify-center text-ink-main hover:text-black hover:bg-amber-50 transition-all shadow-xs"
+            className="w-8 h-8 rounded-full bg-white border border-amber-900/15 flex items-center justify-center text-ink-main hover:text-black hover:bg-amber-50 transition-all shadow-xs shrink-0 cursor-pointer"
+            title="Close"
           >
             <X className="w-4 h-4" />
           </button>
@@ -175,7 +193,7 @@ export default function WriteReviewModal({
 
         {/* Content Body */}
         {isSuccess ? (
-          <div className="p-8 sm:p-12 text-center flex flex-col items-center justify-center space-y-4">
+          <div className="p-8 sm:p-12 text-center flex flex-col items-center justify-center space-y-4 my-auto">
             <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-700 animate-bounce">
               <Check className="w-8 h-8 stroke-[3]" />
             </div>
@@ -191,44 +209,45 @@ export default function WriteReviewModal({
             </div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="overflow-y-auto p-5 sm:p-6 space-y-5">
-            {/* Star Rating Selector */}
-            <div className="bg-white/80 p-4 rounded-2xl border border-amber-900/10">
-              <label className="block text-xs font-semibold text-amber-900 uppercase tracking-wider mb-2">
-                Your Rating *
-              </label>
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                {[1, 2, 3, 4, 5].map((starValue) => (
-                  <button
-                    key={starValue}
-                    type="button"
-                    onClick={() => setRating(starValue)}
-                    onMouseEnter={() => setHoverRating(starValue)}
-                    onMouseLeave={() => setHoverRating(null)}
-                    className="p-1 focus:outline-none transition-transform hover:scale-110 active:scale-95"
-                    title={`${starValue} Stars`}
-                  >
-                    <Star
-                      className={`w-7 h-7 sm:w-8 sm:h-8 transition-colors ${
-                        starValue <= displayRating
-                          ? "text-amber-500 fill-amber-500 drop-shadow-sm"
-                          : "text-amber-200 hover:text-amber-300"
-                      }`}
-                    />
-                  </button>
-                ))}
+          <form onSubmit={handleSubmit} className="flex-1 min-h-0 flex flex-col">
+            {/* Scrollable Form Body */}
+            <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 space-y-4">
+              {/* Star Rating Selector */}
+              <div className="bg-white/85 p-3.5 sm:p-4 rounded-2xl border border-amber-900/10">
+                <label className="block text-xs font-semibold text-amber-900 uppercase tracking-wider mb-1.5">
+                  Your Rating *
+                </label>
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  {[1, 2, 3, 4, 5].map((starValue) => (
+                    <button
+                      key={starValue}
+                      type="button"
+                      onClick={() => setRating(starValue)}
+                      onMouseEnter={() => setHoverRating(starValue)}
+                      onMouseLeave={() => setHoverRating(null)}
+                      className="p-1 focus:outline-none transition-transform hover:scale-115 active:scale-95 cursor-pointer"
+                      title={`${starValue} Stars`}
+                    >
+                      <Star
+                        className={`w-7 h-7 sm:w-8 sm:h-8 transition-colors ${
+                          starValue <= displayRating
+                            ? "text-amber-500 fill-amber-500 drop-shadow-xs"
+                            : "text-amber-200 hover:text-amber-300"
+                        }`}
+                      />
+                    </button>
+                  ))}
+                </div>
+                <p className="text-xs font-sans font-medium text-amber-800 mt-1.5">
+                  {RATING_LABELS[displayRating]}
+                </p>
               </div>
-              <p className="text-xs font-sans font-medium text-amber-800 mt-2">
-                {RATING_LABELS[displayRating]}
-              </p>
-            </div>
 
-            {/* Artwork Selection */}
-            <div>
-              <label className="block text-xs font-semibold text-amber-900 mb-1.5">
-                Artwork / Commission Ordered
-              </label>
-              <div className="relative">
+              {/* Artwork Selection */}
+              <div>
+                <label className="block text-xs font-semibold text-amber-900 mb-1.5">
+                  Artwork / Commission Ordered
+                </label>
                 <select
                   value={selectedArtworkId || (selectedArtworkTitle === "Custom Canvas Commission" ? "custom" : "")}
                   onChange={handleArtworkChange}
@@ -244,88 +263,88 @@ export default function WriteReviewModal({
                   </optgroup>
                 </select>
               </div>
-            </div>
 
-            {/* Collector Name & Location */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {/* Collector Name & Location */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-semibold text-amber-900 mb-1.5">
+                    Your Name / Moniker *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Priya Sundar"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                      if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
+                    }}
+                    className={`w-full px-3.5 py-2.5 rounded-xl bg-white border ${
+                      errors.name ? "border-rose-500" : "border-amber-900/20"
+                    } text-xs sm:text-sm text-ink-main focus:outline-none focus:ring-2 focus:ring-amber-500/30`}
+                  />
+                  {errors.name && (
+                    <p className="text-[11px] text-rose-600 mt-1">{errors.name}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-amber-900 mb-1.5">
+                    City / Location (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Chennai, Tamil Nadu"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-amber-900/20 text-xs sm:text-sm text-ink-main focus:outline-none focus:ring-2 focus:ring-amber-500/30"
+                  />
+                </div>
+              </div>
+
+              {/* Detailed Review Comment */}
               <div>
-                <label className="block text-xs font-semibold text-amber-900 mb-1.5">
-                  Your Name / Moniker *
-                </label>
-                <input
-                  type="text"
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-xs font-semibold text-amber-900">
+                    Your Review & Experience *
+                  </label>
+                  <span className="text-[11px] text-ink-muted">
+                    {comment.length} characters
+                  </span>
+                </div>
+                <textarea
+                  rows={3}
                   required
-                  placeholder="e.g. Priya Sundar"
-                  value={name}
+                  placeholder="How does the artwork look in your home or on your desk? How did you find the acrylic color vibrancy, brushwork texture, and packaging?"
+                  value={comment}
                   onChange={(e) => {
-                    setName(e.target.value);
-                    if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
+                    setComment(e.target.value);
+                    if (errors.comment) setErrors((prev) => ({ ...prev, comment: undefined }));
                   }}
-                  className={`w-full px-3.5 py-2.5 rounded-xl bg-white border ${
-                    errors.name ? "border-rose-500" : "border-amber-900/20"
-                  } text-xs sm:text-sm text-ink-main focus:outline-none focus:ring-2 focus:ring-amber-500/30`}
+                  className={`w-full px-3.5 py-2 rounded-xl bg-white border ${
+                    errors.comment ? "border-rose-500" : "border-amber-900/20"
+                  } text-xs sm:text-sm text-ink-main focus:outline-none focus:ring-2 focus:ring-amber-500/30 leading-relaxed`}
                 />
-                {errors.name && (
-                  <p className="text-[11px] text-rose-600 mt-1">{errors.name}</p>
+                {errors.comment && (
+                  <p className="text-[11px] text-rose-600 mt-1">{errors.comment}</p>
                 )}
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-amber-900 mb-1.5">
-                  City / Location (Optional)
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. Chennai, Tamil Nadu"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-amber-900/20 text-xs sm:text-sm text-ink-main focus:outline-none focus:ring-2 focus:ring-amber-500/30"
-                />
-              </div>
-            </div>
-
-            {/* Detailed Review Comment */}
-            <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="text-xs font-semibold text-amber-900">
-                  Your Review & Experience *
-                </label>
-                <span className="text-[11px] text-ink-muted">
-                  {comment.length} characters
+              {/* Verified Collector Promise */}
+              <div className="p-3 bg-amber-500/10 rounded-xl border border-amber-500/20 flex items-start gap-2 text-xs text-amber-950">
+                <Check className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                <span>
+                  Your review will be published under Guna&apos;s verified collector stories to inspire fellow art lovers.
                 </span>
               </div>
-              <textarea
-                rows={4}
-                required
-                placeholder="How does the artwork look in your home or on your desk? How did you find the acrylic color vibrancy, brushwork texture, and packaging?"
-                value={comment}
-                onChange={(e) => {
-                  setComment(e.target.value);
-                  if (errors.comment) setErrors((prev) => ({ ...prev, comment: undefined }));
-                }}
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-white border ${
-                  errors.comment ? "border-rose-500" : "border-amber-900/20"
-                } text-xs sm:text-sm text-ink-main focus:outline-none focus:ring-2 focus:ring-amber-500/30 leading-relaxed`}
-              />
-              {errors.comment && (
-                <p className="text-[11px] text-rose-600 mt-1">{errors.comment}</p>
-              )}
             </div>
 
-            {/* Verified Collector Promise */}
-            <div className="p-3 bg-amber-500/10 rounded-xl border border-amber-500/20 flex items-start gap-2 text-xs text-amber-950">
-              <Check className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
-              <span>
-                By submitting, your review will be published under Guna&apos;s verified collector stories to inspire fellow art lovers.
-              </span>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="pt-2 flex items-center justify-end gap-3">
+            {/* Sticky Action Footer - Always visible at bottom, never cut off */}
+            <div className="shrink-0 px-5 sm:px-6 py-3.5 sm:py-4 bg-white/95 backdrop-blur-md border-t border-amber-900/10 flex items-center justify-end gap-3">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-ink-muted hover:text-ink-main transition-colors"
+                className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-ink-muted hover:text-ink-main transition-colors cursor-pointer"
               >
                 Cancel
               </button>
@@ -333,7 +352,7 @@ export default function WriteReviewModal({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-semibold text-xs sm:text-sm shadow-warm-amber active:scale-95 transition-all flex items-center gap-2 disabled:opacity-50"
+                className="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-semibold text-xs sm:text-sm shadow-warm-amber active:scale-95 transition-all flex items-center gap-2 disabled:opacity-50 cursor-pointer"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>{isSubmitting ? "Publishing..." : "Submit Review"}</span>
@@ -342,6 +361,7 @@ export default function WriteReviewModal({
           </form>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

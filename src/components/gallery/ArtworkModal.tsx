@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -22,18 +23,27 @@ export default function ArtworkModal({
   onToggleOrder,
   isOrdered = false,
 }: ArtworkModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [copiedHex, setCopiedHex] = useState<string | null>(null);
   const [isWriteReviewOpen, setIsWriteReviewOpen] = useState(false);
   const [reviews, setReviews] = useState<Review[]>([]);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (artwork) {
       setReviews(getSavedReviews());
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
     }
   }, [artwork]);
 
-
-  if (!artwork) return null;
+  if (!mounted || !artwork) return null;
 
   const handleCopyColor = (hex: string) => {
     navigator.clipboard.writeText(hex);
@@ -41,10 +51,11 @@ export default function ArtworkModal({
     setTimeout(() => setCopiedHex(null), 2000);
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-md animate-in fade-in duration-200">
+  return createPortal(
+    <div className="fixed inset-0 z-[99990] flex items-center justify-center p-3 sm:p-6 bg-black/65 backdrop-blur-sm animate-in fade-in duration-200">
       {/* Backdrop overlay click to close */}
       <div className="absolute inset-0" onClick={onClose} />
+
 
       {/* Modal Card */}
       <div className="relative z-10 w-full max-w-4xl bg-surface border border-amber-900/15 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[92vh] sm:max-h-[85vh]">
@@ -253,7 +264,9 @@ export default function ArtworkModal({
           setReviews((prev) => [newRev, ...prev]);
         }}
       />
-    </div>
+    </div>,
+    document.body
   );
 }
+
 
