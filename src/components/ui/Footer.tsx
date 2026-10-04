@@ -58,7 +58,7 @@ export default function Footer() {
               className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-900 font-semibold text-xs sm:text-sm hover:bg-amber-500/20 transition-all shadow-xs active:scale-95"
             >
               <Star className="w-3.5 h-3.5 text-amber-600 fill-amber-600" />
-              <span>Reviews (4.9 ★)</span>
+              <span>Reviews</span>
             </Link>
           </div>
         </div>

@@ -126,172 +126,206 @@ export default function ReviewsSection() {
         </div>
       </div>
 
-      {/* Stats Summary Banner */}
-      <div className="mb-10 p-6 sm:p-8 rounded-3xl bg-white/80 border border-amber-900/15 shadow-sm relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-5 sm:gap-6 text-center md:text-left">
-          <div className="flex flex-col items-center justify-center">
-            <span className="text-4xl sm:text-5xl font-serif font-bold text-ink-main">
-              {averageRating}
-            </span>
-            <div className="flex items-center gap-1 mt-1 text-amber-500">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
-              ))}
+      {/* Stats Summary Banner (Only shown when there are real collector reviews) */}
+      {reviews.length > 0 && (
+        <div className="mb-10 p-6 sm:p-8 rounded-3xl bg-white/80 border border-amber-900/15 shadow-sm relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-5 sm:gap-6 text-center md:text-left">
+            <div className="flex flex-col items-center justify-center">
+              <span className="text-4xl sm:text-5xl font-serif font-bold text-ink-main">
+                {averageRating}
+              </span>
+              <div className="flex items-center gap-1 mt-1 text-amber-500">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-4 h-4 ${
+                      i < Math.round(Number(averageRating))
+                        ? "fill-amber-500 text-amber-500"
+                        : "text-amber-200"
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="text-[11px] font-sans text-ink-muted mt-1">
+                Overall Rating
+              </span>
             </div>
-            <span className="text-[11px] font-sans text-ink-muted mt-1">
-              Overall Rating
-            </span>
+
+            <div className="h-12 w-px bg-amber-900/10 hidden sm:block" />
+
+            <div className="space-y-1">
+              <h4 className="text-sm sm:text-base font-serif font-semibold text-ink-main">
+                Handcrafted Praise
+              </h4>
+              <p className="text-xs text-ink-muted font-sans max-w-md">
+                {reviews.length} authentic collector {reviews.length === 1 ? "review" : "reviews"} from art lovers across India.
+              </p>
+            </div>
           </div>
 
-          <div className="h-12 w-px bg-amber-900/10 hidden sm:block" />
-
-          <div className="space-y-1">
-            <h4 className="text-sm sm:text-base font-serif font-semibold text-ink-main">
-              100% Handcrafted Praise
-            </h4>
-            <p className="text-xs text-ink-muted font-sans max-w-md">
-              Over {reviews.length} authentic collector reviews praising pigment vibrancy, tactile acrylic textures, safe packaging, and personal artist touch.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-sans font-medium flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>Verified Orders</span>
-          </div>
-          <div className="px-4 py-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-950 text-xs font-sans font-medium flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-amber-600" />
-            <span>Handmade in Studio</span>
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-sans font-medium flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <span>Verified Orders</span>
+            </div>
+            <div className="px-4 py-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-950 text-xs font-sans font-medium flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-600" />
+              <span>Handmade in Studio</span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Filter Tabs */}
-      <div className="mb-8 flex flex-wrap items-center gap-2 relative z-10">
-        <div className="flex items-center gap-1.5 text-xs text-ink-muted mr-2 font-medium">
-          <Filter className="w-3.5 h-3.5" />
-          <span>Filter:</span>
+      {/* Filter Tabs (Shown only when multiple reviews exist) */}
+      {reviews.length > 0 && (
+        <div className="mb-8 flex flex-wrap items-center gap-2 relative z-10">
+          <div className="flex items-center gap-1.5 text-xs text-ink-muted mr-2 font-medium">
+            <Filter className="w-3.5 h-3.5" />
+            <span>Filter:</span>
+          </div>
+          {["All", "5 Stars", "Custom Orders", "Pop Culture", "Landscapes"].map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              onClick={() => setSelectedFilter(filter)}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-medium transition-all ${
+                selectedFilter === filter
+                  ? "bg-amber-500 text-white shadow-warm-amber"
+                  : "bg-white/80 border border-amber-900/15 text-ink-muted hover:text-ink-main hover:border-amber-400"
+              }`}
+            >
+              {filter}
+            </button>
+          ))}
         </div>
-        {["All", "5 Stars", "Custom Orders", "Pop Culture", "Landscapes"].map((filter) => (
-          <button
-            key={filter}
-            type="button"
-            onClick={() => setSelectedFilter(filter)}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-sans font-medium transition-all ${
-              selectedFilter === filter
-                ? "bg-amber-500 text-white shadow-warm-amber"
-                : "bg-white/80 border border-amber-900/15 text-ink-muted hover:text-ink-main hover:border-amber-400"
-            }`}
-          >
-            {filter}
-          </button>
-        ))}
-      </div>
+      )}
 
       {/* Reviews Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-        <AnimatePresence>
-          {filteredReviews.map((rev) => (
-            <motion.div
-              key={rev.id}
-              layout
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              className="p-6 rounded-3xl bg-white/90 border border-amber-900/15 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
-            >
-              <div>
-                {/* Header: Author & Star Rating */}
-                <div className="flex items-start justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`w-10 h-10 rounded-full border flex items-center justify-center font-serif font-bold text-xs shrink-0 ${
-                        rev.avatarBg || "bg-amber-100 text-amber-900 border-amber-300"
-                      }`}
-                    >
-                      {getInitials(rev.author)}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="font-serif font-bold text-ink-main text-sm sm:text-base">
-                          {rev.author}
-                        </span>
-                        {rev.verified && (
-                          <span
-                            title="Verified Collector"
-                            className="inline-flex items-center text-[10px] text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-200 font-sans font-medium"
-                          >
-                            <CheckCircle2 className="w-2.5 h-2.5 mr-0.5" />
-                            Verified
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-[11px] font-sans text-ink-muted block">
-                        {rev.location || "India"} &bull; {rev.date}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Stars */}
-                  <div className="flex items-center text-amber-500 shrink-0">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-3.5 h-3.5 ${
-                          i < rev.rating
-                            ? "fill-amber-500 text-amber-500"
-                            : "text-amber-200"
+      {filteredReviews.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+          <AnimatePresence>
+            {filteredReviews.map((rev) => (
+              <motion.div
+                key={rev.id}
+                layout
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="p-6 rounded-3xl bg-white/90 border border-amber-900/15 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+              >
+                <div>
+                  {/* Header: Author & Star Rating */}
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`w-10 h-10 rounded-full border flex items-center justify-center font-serif font-bold text-xs shrink-0 ${
+                          rev.avatarBg || "bg-amber-100 text-amber-900 border-amber-300"
                         }`}
-                      />
-                    ))}
+                      >
+                        {getInitials(rev.author)}
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-serif font-bold text-ink-main text-sm sm:text-base">
+                            {rev.author}
+                          </span>
+                          {rev.verified && (
+                            <span
+                              title="Verified Collector"
+                              className="inline-flex items-center text-[10px] text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-200 font-sans font-medium"
+                            >
+                              <CheckCircle2 className="w-2.5 h-2.5 mr-0.5" />
+                              Verified
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[11px] font-sans text-ink-muted block">
+                          {rev.location || "India"} &bull; {rev.date}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Stars */}
+                    <div className="flex items-center text-amber-500 shrink-0">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-3.5 h-3.5 ${
+                            i < rev.rating
+                              ? "fill-amber-500 text-amber-500"
+                              : "text-amber-200"
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
+
+                  {/* Artwork Tag */}
+                  <div className="mb-3">
+                    <span className="inline-block px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-900 text-xs font-medium font-sans">
+                      🎨 {rev.artworkTitle}
+                    </span>
+                  </div>
+
+                  {/* Review Text Body */}
+                  <p className="text-xs sm:text-sm text-ink-main/90 font-sans leading-relaxed">
+                    &ldquo;{rev.comment}&rdquo;
+                  </p>
                 </div>
 
-                {/* Artwork Tag */}
-                <div className="mb-3">
-                  <span className="inline-block px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-900 text-xs font-medium font-sans">
-                    🎨 {rev.artworkTitle}
+                {/* Footer: Helpful Vote */}
+                <div className="mt-5 pt-4 border-t border-amber-900/10 flex items-center justify-between text-xs font-sans text-ink-muted">
+                  <span className="text-[11px] text-amber-900/70 font-medium">
+                    Collector Review
                   </span>
+
+                  <button
+                    type="button"
+                    onClick={() => handleHelpfulClick(rev.id)}
+                    disabled={votedReviews[rev.id]}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border transition-all text-xs ${
+                      votedReviews[rev.id]
+                        ? "bg-amber-100 text-amber-900 border-amber-300 font-semibold"
+                        : "bg-white text-ink-muted border-amber-900/15 hover:border-amber-500 hover:text-amber-800"
+                    }`}
+                    title="Mark this review as helpful"
+                  >
+                    <ThumbsUp className="w-3 h-3" />
+                    <span>
+                      Helpful ({rev.helpfulCount})
+                    </span>
+                  </button>
                 </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      )}
 
-                {/* Review Text Body */}
-                <p className="text-xs sm:text-sm text-ink-main/90 font-sans leading-relaxed">
-                  &ldquo;{rev.comment}&rdquo;
-                </p>
-              </div>
-
-              {/* Footer: Helpful Vote */}
-              <div className="mt-5 pt-4 border-t border-amber-900/10 flex items-center justify-between text-xs font-sans text-ink-muted">
-                <span className="text-[11px] text-amber-900/70 font-medium">
-                  Collector Review
-                </span>
-
-                <button
-                  type="button"
-                  onClick={() => handleHelpfulClick(rev.id)}
-                  disabled={votedReviews[rev.id]}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border transition-all text-xs ${
-                    votedReviews[rev.id]
-                      ? "bg-amber-100 text-amber-900 border-amber-300 font-semibold"
-                      : "bg-white text-ink-muted border-amber-900/15 hover:border-amber-500 hover:text-amber-800"
-                  }`}
-                  title="Mark this review as helpful"
-                >
-                  <ThumbsUp className="w-3 h-3" />
-                  <span>
-                    Helpful ({rev.helpfulCount})
-                  </span>
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
-
-      {filteredReviews.length === 0 && (
-        <div className="text-center py-16 bg-white/50 rounded-3xl border border-dashed border-amber-900/20">
+      {/* Empty State when no reviews exist at all */}
+      {reviews.length === 0 ? (
+        <div className="text-center py-16 px-6 bg-white/70 backdrop-blur-xs rounded-3xl border border-dashed border-amber-900/20 relative z-10 max-w-xl mx-auto">
+          <div className="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center mx-auto mb-4 text-amber-600">
+            <MessageSquareQuote className="w-7 h-7" />
+          </div>
+          <h4 className="font-serif text-xl sm:text-2xl font-semibold text-ink-main mb-2">
+            No Collector Reviews Yet
+          </h4>
+          <p className="text-xs sm:text-sm text-ink-muted font-sans max-w-md mx-auto mb-6 leading-relaxed">
+            Have you received a hand-painted canvas or commissioned custom artwork from Guna? Be the first collector to share your experience!
+          </p>
+          <button
+            type="button"
+            onClick={() => setIsWriteModalOpen(true)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-semibold text-xs sm:text-sm shadow-warm-amber active:scale-95 transition-all"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Write the First Review</span>
+          </button>
+        </div>
+      ) : filteredReviews.length === 0 ? (
+        <div className="text-center py-16 px-6 bg-white/50 rounded-3xl border border-dashed border-amber-900/20 relative z-10">
           <MessageSquareQuote className="w-10 h-10 text-amber-600/50 mx-auto mb-3" />
           <h4 className="font-serif text-lg font-semibold text-ink-main mb-1">
             No reviews yet for &ldquo;{selectedFilter}&rdquo;
@@ -307,7 +341,7 @@ export default function ReviewsSection() {
             Leave a Review
           </button>
         </div>
-      )}
+      ) : null}
 
       {/* Write a Review Modal */}
       <WriteReviewModal

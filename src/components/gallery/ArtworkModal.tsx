@@ -165,52 +165,75 @@ export default function ArtworkModal({
 
             {/* Collector Reviews & Review Option */}
             <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-900/10">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center text-amber-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-                    ))}
-                  </div>
-                  <span className="text-xs font-serif font-bold text-ink-main">
-                    5.0 &bull; Collector Praise
-                  </span>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setIsWriteReviewOpen(true)}
-                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-amber-900/20 hover:border-amber-500 text-amber-900 text-xs font-medium font-sans transition-all active:scale-95 shadow-xs"
-                >
-                  <MessageSquarePlus className="w-3.5 h-3.5 text-amber-600" />
-                  <span>Write a Review</span>
-                </button>
-              </div>
-
               {(() => {
                 const specific = reviews.filter(
-                  (r) => r.artworkId === artwork.id || r.artworkTitle.toLowerCase() === artwork.title.toLowerCase()
+                  (r) =>
+                    r.artworkId === artwork.id ||
+                    (r.artworkTitle && artwork.title && r.artworkTitle.toLowerCase() === artwork.title.toLowerCase())
                 );
-                const displayRev = specific[0] || reviews[0];
-
-                if (displayRev) {
-                  return (
-                    <div className="mt-2 text-xs font-sans text-ink-muted">
-                      <p className="italic line-clamp-2">
-                        &ldquo;{displayRev.comment}&rdquo;
-                      </p>
-                      <div className="mt-1 flex items-center justify-between text-[11px] text-amber-900/80">
-                        <span>&mdash; {displayRev.author} ({displayRev.location || "Verified Collector"})</span>
-                        <span className="text-emerald-700 font-medium">Verified Order</span>
-                      </div>
-                    </div>
-                  );
-                }
+                const avgRating =
+                  specific.length > 0
+                    ? (specific.reduce((acc, cur) => acc + cur.rating, 0) / specific.length).toFixed(1)
+                    : null;
+                const displayRev = specific[0];
 
                 return (
-                  <p className="text-xs font-sans text-ink-muted mt-1">
-                    Have you collected this artwork? Be the first to share your experience with fellow collectors!
-                  </p>
+                  <>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center text-amber-500">
+                          {avgRating ? (
+                            [...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`w-3.5 h-3.5 ${
+                                  i < Math.round(Number(avgRating))
+                                    ? "fill-amber-500 text-amber-500"
+                                    : "text-amber-200"
+                                }`}
+                              />
+                            ))
+                          ) : (
+                            <Star className="w-3.5 h-3.5 text-amber-500" />
+                          )}
+                        </div>
+                        <span className="text-xs font-serif font-bold text-ink-main">
+                          {avgRating
+                            ? `${avgRating} • Collector Praise (${specific.length})`
+                            : "Collector Reviews"}
+                        </span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setIsWriteReviewOpen(true)}
+                        className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-amber-900/20 hover:border-amber-500 text-amber-900 text-xs font-medium font-sans transition-all active:scale-95 shadow-xs"
+                      >
+                        <MessageSquarePlus className="w-3.5 h-3.5 text-amber-600" />
+                        <span>Write a Review</span>
+                      </button>
+                    </div>
+
+                    {displayRev ? (
+                      <div className="mt-2 text-xs font-sans text-ink-muted">
+                        <p className="italic line-clamp-2">
+                          &ldquo;{displayRev.comment}&rdquo;
+                        </p>
+                        <div className="mt-1 flex items-center justify-between text-[11px] text-amber-900/80">
+                          <span>
+                            &mdash; {displayRev.author} ({displayRev.location || "Verified Collector"})
+                          </span>
+                          {displayRev.verified && (
+                            <span className="text-emerald-700 font-medium">Verified Order</span>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-xs font-sans text-ink-muted mt-1">
+                        Have you collected this artwork? Be the first to share your experience with fellow collectors!
+                      </p>
+                    )}
+                  </>
                 );
               })()}
             </div>
