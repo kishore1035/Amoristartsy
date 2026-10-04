@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Artwork } from "@/data/artworks";
 import { X, Heart, Copy, Check, ShoppingBag, Plus, Star, MessageSquarePlus } from "lucide-react";
 import WriteReviewModal from "@/components/reviews/WriteReviewModal";
-import { getSavedReviews, Review } from "@/data/reviews";
+import { getSavedReviews, fetchReviews, Review } from "@/data/reviews";
 
 interface ArtworkModalProps {
   artwork: Artwork | null;
@@ -33,11 +33,18 @@ export default function ArtworkModal({
   }, []);
 
   useEffect(() => {
+    let isMounted = true;
     if (artwork) {
       setReviews(getSavedReviews());
+      fetchReviews().then((cloudReviews) => {
+        if (isMounted && cloudReviews) {
+          setReviews(cloudReviews);
+        }
+      });
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = "hidden";
       return () => {
+        isMounted = false;
         document.body.style.overflow = originalOverflow;
       };
     }

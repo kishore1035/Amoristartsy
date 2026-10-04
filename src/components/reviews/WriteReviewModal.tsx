@@ -93,7 +93,7 @@ export default function WriteReviewModal({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: { name?: string; comment?: string } = {};
 
@@ -113,7 +113,7 @@ export default function WriteReviewModal({
     setIsSubmitting(true);
 
     try {
-      const created = saveNewReview({
+      const created = await saveNewReview({
         author: name.trim(),
         rating,
         artworkId: selectedArtworkId || undefined,

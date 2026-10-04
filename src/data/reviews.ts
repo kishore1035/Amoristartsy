@@ -1,3 +1,5 @@
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+
 export interface Review {
   id: string;
   author: string;
@@ -11,13 +13,52 @@ export interface Review {
   verified: boolean;
   helpfulCount: number;
   avatarBg?: string;
+  createdAt?: string;
 }
 
 export const INITIAL_REVIEWS: Review[] = [];
 
 const LOCAL_STORAGE_KEY = "amoristartsy_reviews_v1";
 
-// Safe retrieval from localStorage - only returns reviews created by the user
+// Map database column names (snake_case) to client Review interface (camelCase)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mapRowToReview(row: any): Review {
+  return {
+    id: row.id,
+    author: row.author,
+    rating: row.rating,
+    date: row.date,
+    artworkId: row.artwork_id || undefined,
+    artworkTitle: row.artwork_title,
+    category: row.category || undefined,
+    comment: row.comment,
+    location: row.location || "India",
+    verified: row.verified ?? true,
+    helpfulCount: row.helpful_count ?? 0,
+    avatarBg: row.avatar_bg || undefined,
+    createdAt: row.created_at,
+  };
+}
+
+// Map client Review to database record format
+function mapReviewToRow(rev: Review) {
+  return {
+    id: rev.id,
+    author: rev.author,
+    rating: rev.rating,
+    date: rev.date,
+    artwork_id: rev.artworkId || null,
+    artwork_title: rev.artworkTitle,
+    category: rev.category || null,
+    comment: rev.comment,
+    location: rev.location || "India",
+    verified: rev.verified,
+    helpful_count: rev.helpfulCount,
+    avatar_bg: rev.avatarBg || null,
+  };
+}
+
+// Safe retrieval from localStorage cache
 export function getSavedReviews(): Review[] {
   if (typeof window === "undefined") {
     return [];
@@ -27,13 +68,11 @@ export function getSavedReviews(): Review[] {
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     if (Array.isArray(parsed)) {
-      // Filter out any old mock/seed review IDs (rev-1 through rev-6)
       const fakeIds = new Set(["rev-1", "rev-2", "rev-3", "rev-4", "rev-5", "rev-6"]);
       const userReviews = parsed.filter(
         (r): r is Review => Boolean(r && typeof r === "object" && r.id && !fakeIds.has(r.id))
       );
 
-      // If fake reviews were lingering in the user's browser localStorage, clean them up permanently
       if (userReviews.length !== parsed.length) {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userReviews));
       }
@@ -47,8 +86,39 @@ export function getSavedReviews(): Review[] {
   }
 }
 
-// Save a new review to localStorage
-export function saveNewReview(reviewData: Omit<Review, "id" | "date" | "helpfulCount">): Review {
+// Fetch live reviews from Supabase (falls back to local storage)
+export async function fetchReviews(): Promise<Review[]> {
+  if (isSupabaseConfigured && supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("reviews")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.warn("Supabase fetch error, using local reviews:", error.message);
+        return getSavedReviews();
+      }
+
+      if (data) {
+        const liveReviews = data.map(mapRowToReview);
+        if (typeof window !== "undefined") {
+          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(liveReviews));
+        }
+        return liveReviews;
+      }
+    } catch (err) {
+      console.warn("Failed fetching reviews from Supabase:", err);
+    }
+  }
+
+  return getSavedReviews();
+}
+
+// Save a new review to Supabase + localStorage cache
+export async function saveNewReview(
+  reviewData: Omit<Review, "id" | "date" | "helpfulCount">
+): Promise<Review> {
   const existing = getSavedReviews();
   const dateFormatted = new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -74,33 +144,60 @@ export function saveNewReview(reviewData: Omit<Review, "id" | "date" | "helpfulC
     avatarBg: randomColor,
   };
 
-  const updated = [newReview, ...existing];
+  // 1. Immediately cache locally
+  const updated = [newReview, ...existing.filter((r) => r.id !== newReview.id)];
   try {
     if (typeof window !== "undefined") {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
       window.dispatchEvent(new Event("amoristartsy_reviews_updated"));
     }
   } catch (e) {
-    console.error("Error saving review to localStorage", e);
+    console.error("Error saving review to local cache", e);
+  }
+
+  // 2. Persist to Supabase if configured
+  if (isSupabaseConfigured && supabase) {
+    try {
+      const row = mapReviewToRow(newReview);
+      const { error } = await supabase.from("reviews").insert([row]);
+      if (error) {
+        console.error("Supabase review insert error:", error);
+      }
+    } catch (err) {
+      console.error("Failed pushing review to Supabase:", err);
+    }
   }
 
   return newReview;
 }
 
-// Mark helpful
-export function incrementReviewHelpful(reviewId: string): void {
-  if (typeof window === "undefined") return;
-  try {
-    const reviews = getSavedReviews();
-    const updated = reviews.map((r) =>
-      r.id === reviewId ? { ...r, helpfulCount: r.helpfulCount + 1 } : r
-    );
+// Mark helpful count
+export async function incrementReviewHelpful(reviewId: string): Promise<void> {
+  // Update local cache
+  const reviews = getSavedReviews();
+  const target = reviews.find((r) => r.id === reviewId);
+  const newCount = (target?.helpfulCount || 0) + 1;
+
+  const updated = reviews.map((r) =>
+    r.id === reviewId ? { ...r, helpfulCount: newCount } : r
+  );
+
+  if (typeof window !== "undefined") {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
     window.dispatchEvent(new Event("amoristartsy_reviews_updated"));
-  } catch (e) {
-    console.error("Error updating helpful count", e);
+  }
+
+  // Sync to Supabase
+  if (isSupabaseConfigured && supabase && target) {
+    try {
+      await supabase
+        .from("reviews")
+        .update({ helpful_count: newCount })
+        .eq("id", reviewId);
+    } catch (err) {
+      console.warn("Failed updating helpful count in Supabase:", err);
+    }
   }
 }
 
 export const incrementHelpful = incrementReviewHelpful;
-

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { Review, getSavedReviews, incrementHelpful } from "@/data/reviews";
+import { Review, getSavedReviews, fetchReviews, incrementHelpful } from "@/data/reviews";
 import WriteReviewModal from "./WriteReviewModal";
 import {
   Star,
@@ -23,8 +23,17 @@ export default function ReviewsSection() {
 
   // Sync reviews from storage and listen to custom updates
   useEffect(() => {
-    const loadReviews = () => {
-      setReviews(getSavedReviews());
+    let isMounted = true;
+    const loadReviews = async () => {
+      // 1. Immediate render from cached reviews
+      const cached = getSavedReviews();
+      if (isMounted) setReviews(cached);
+
+      // 2. Fetch live updates from Supabase cloud
+      const live = await fetchReviews();
+      if (isMounted && live) {
+        setReviews(live);
+      }
     };
     loadReviews();
 
@@ -34,6 +43,7 @@ export default function ReviewsSection() {
 
     window.addEventListener("amoristartsy_reviews_updated", handleUpdate);
     return () => {
+      isMounted = false;
       window.removeEventListener("amoristartsy_reviews_updated", handleUpdate);
     };
   }, []);
