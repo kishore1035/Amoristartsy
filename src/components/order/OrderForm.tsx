@@ -9,7 +9,17 @@ import WriteReviewModal from "@/components/reviews/WriteReviewModal";
 import { ShoppingBag, Plus, Minus, Check, MapPin, Send, Search, Eye, ArrowDown, MessageCircle, Sparkles, Star } from "lucide-react";
 
 
-const CATEGORIES = ["All", "Pop Culture", "Traditional", "Typography", "Landscapes & Illustrative"] as const;
+const CATEGORIES = [
+  "All",
+  "Canvas Paintings",
+  "Paper Paintings",
+  "Sketchbook",
+  "Wood & MDF",
+  "CD Paintings",
+  "Textured Art",
+  "DIYs & Upcycled",
+  "Polaroids",
+] as const;
 const INITIAL_VISIBLE_COUNT = 12;
 
 interface OrderQuantities {

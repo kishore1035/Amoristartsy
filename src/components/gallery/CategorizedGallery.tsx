@@ -11,7 +11,17 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(Flip);
 }
 
-const CATEGORIES = ["All", "Pop Culture", "Cute & Illustrative"] as const;
+const CATEGORIES = [
+  "All",
+  "Canvas Paintings",
+  "Paper Paintings",
+  "Sketchbook",
+  "Wood & MDF",
+  "CD Paintings",
+  "Textured Art",
+  "DIYs & Upcycled",
+  "Polaroids",
+] as const;
 
 interface CategorizedGalleryProps {
   onSelectArtwork: (artwork: Artwork) => void;

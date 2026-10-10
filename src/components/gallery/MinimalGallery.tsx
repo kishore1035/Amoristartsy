@@ -6,7 +6,17 @@ import ArtworkCard from "./ArtworkCard";
 import { Search, Sparkles, Grid } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const CATEGORIES = ["All", "Pop Culture", "Traditional", "Typography", "Landscapes & Illustrative"] as const;
+const CATEGORIES = [
+  "All",
+  "Canvas Paintings",
+  "Paper Paintings",
+  "Sketchbook",
+  "Wood & MDF",
+  "CD Paintings",
+  "Textured Art",
+  "DIYs & Upcycled",
+  "Polaroids",
+] as const;
 
 interface MinimalGalleryProps {
   onSelectArtwork: (artwork: Artwork) => void;

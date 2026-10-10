@@ -52,3 +52,8 @@ Thumbs.db
 
 # Vercel
 .vercel
+
+# Temporary scratch & media exports
+/scratch/
+*.zip
+WhatsApp Image*
