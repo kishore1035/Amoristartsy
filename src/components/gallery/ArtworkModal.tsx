@@ -131,9 +131,6 @@ export default function ArtworkModal({
                 <span className="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 text-xs font-sans font-medium">
                   {artwork.category}
                 </span>
-                <span className="px-3 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-accent-terracotta text-sm font-calligraphy font-bold">
-                  {artwork.canvasShape} canvas
-                </span>
               </div>
 
               <span className="px-3.5 py-1 rounded-full bg-amber-500 text-white font-sans font-bold text-xs shadow-warm-amber">

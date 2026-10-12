@@ -108,13 +108,10 @@ export default function ArtworkCard({ artwork, onSelect, priority = false }: Art
             </Link>
           </div>
 
-          {/* Shape & Category Tags */}
+          {/* Category Tag */}
           <div className="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 z-20 flex flex-wrap gap-1 sm:gap-1.5">
             <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-white/95 border border-amber-900/10 backdrop-blur-md text-[10px] sm:text-[11px] font-sans text-amber-900 font-semibold shadow-xs">
               {artwork.category}
-            </span>
-            <span className="px-2.5 py-0.5 sm:py-1 rounded-full bg-white/95 border border-amber-900/10 backdrop-blur-md text-xs font-calligraphy text-accent-terracotta font-bold shadow-xs">
-              {artwork.canvasShape} canvas
             </span>
           </div>
 

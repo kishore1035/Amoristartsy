@@ -120,7 +120,7 @@ export default function OrderForm({ onSwitchToCustom }: OrderFormProps = {}) {
     let itemsSummary = selectedItems
       .map(
         (item) =>
-          `- ${item.title} (${item.canvasShape} canvas, x${quantities[item.id]}) — ₹${
+          `- ${item.title} (x${quantities[item.id]}) — ₹${
             item.price * quantities[item.id]
           }`
       )
@@ -268,9 +268,6 @@ export default function OrderForm({ onSwitchToCustom }: OrderFormProps = {}) {
 
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5 sm:gap-2 mb-0.5">
-                          <span className="px-2 py-0.5 rounded-full bg-white text-xs font-calligraphy text-accent-terracotta font-bold border border-amber-900/10">
-                            {artwork.canvasShape} canvas
-                          </span>
                           <span className="text-[10px] sm:text-xs font-sans text-ink-muted truncate">
                             {artwork.sizeDimensions}
                           </span>

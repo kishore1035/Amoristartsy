@@ -257,7 +257,7 @@ export default function WriteReviewModal({
                   <optgroup label="Original Studio Artworks">
                     {ARTWORKS.slice(0, 30).map((art) => (
                       <option key={art.id} value={art.id}>
-                        {art.title} ({art.canvasShape} canvas - ₹{art.price})
+                        {art.title} (₹{art.price})
                       </option>
                     ))}
                   </optgroup>

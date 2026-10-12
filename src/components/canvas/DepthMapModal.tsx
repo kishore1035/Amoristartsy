@@ -109,13 +109,10 @@ export default function DepthMapModal({ artwork, onClose }: DepthMapModalProps) 
         {/* Right: Artwork Metadata & Lore Sidebar */}
         <div className="w-full lg:w-2/5 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto bg-surface/50 border-t lg:border-t-0 lg:border-l border-white/10">
           <div>
-            {/* Category & Canvas Shape */}
+            {/* Category & Dimensions */}
             <div className="flex flex-wrap items-center gap-2 mb-3">
               <span className="px-2.5 py-1 rounded-md bg-primary-500/10 border border-primary-500/30 text-amber-800 text-xs font-mono uppercase tracking-wider">
                 {artwork.category}
-              </span>
-              <span className="px-2.5 py-1 rounded-md bg-accent-magenta/10 border border-accent-magenta/30 text-accent-magenta text-xs font-mono capitalize">
-                {artwork.canvasShape} Canvas
               </span>
               <span className="text-xs font-mono text-ink-muted">• {artwork.sizeDimensions}</span>
             </div>
